@@ -6,7 +6,13 @@
 package excel;
 
 import static excel.ProgramasExcel.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.file;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -14,11 +20,15 @@ import java.io.IOException;
  */
 public class ProgramaPrincipal {
     
-        public static void main(String[] args) throws IOException {
+        public static void main(String[] args) throws IOException, InvalidFormatException {
         
         ProgramasExcel pex = new ProgramasExcel();
+            
+
         pex.comprobarExcel();
-        pex.CrearHoja("Productor", "Dicaprio");
+        pex.anadirHoja("Lista");
+        //pex.CrearHoja("Productor", "Dicaprio");
+        //pex.comprobarColumna("Productor", "Spielberg");
         
         
     }  

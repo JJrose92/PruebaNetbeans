@@ -5,17 +5,36 @@
  */
 package jpanels;
 
+import excel.ProgramasExcel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 /**
  *
  * @author Juan
  */
 public class AnadirProductor extends javax.swing.JFrame {
 
+    private String getValue;
+
     /**
      * Creates new form AnadirProductor
      */
     public AnadirProductor() {
         initComponents();
+        OKButton e1 = new OKButton();
+        MENUButton e2 = new MENUButton();
+        VOLVERButton e3 = new VOLVERButton();
+        OKButton.addActionListener(e1);
+        MENUButton.addActionListener(e2);
+        VOLVERButton.addActionListener(e3);
+
     }
 
     /**
@@ -29,13 +48,12 @@ public class AnadirProductor extends javax.swing.JFrame {
 
         PRODUCTORTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        OKButton = new javax.swing.JButton();
         MENUButton = new javax.swing.JButton();
         VOLVERButton = new javax.swing.JButton();
+        OKButton = new JButton("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PRODUCTORTextField.setText("Escriba el nombre del productor");
         PRODUCTORTextField.setToolTipText("");
         PRODUCTORTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,14 +62,6 @@ public class AnadirProductor extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Productor:");
-
-        OKButton.setText("OK");
-        OKButton.setToolTipText("");
-        OKButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKButtonActionPerformed(evt);
-            }
-        });
 
         MENUButton.setText("MENU");
         MENUButton.setToolTipText("");
@@ -63,6 +73,8 @@ public class AnadirProductor extends javax.swing.JFrame {
 
         VOLVERButton.setText("VOLVER");
         VOLVERButton.setToolTipText("");
+
+        OKButton.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,11 +106,13 @@ public class AnadirProductor extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OKButton)
                     .addComponent(MENUButton)
-                    .addComponent(VOLVERButton))
+                    .addComponent(VOLVERButton)
+                    .addComponent(OKButton))
                 .addContainerGap())
         );
+
+        PRODUCTORTextField.getAccessibleContext().setAccessibleParent(OKButton);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,9 +125,51 @@ public class AnadirProductor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MENUButtonActionPerformed
 
-    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-        String text = PRODUCTORTextField.getText();
-    }//GEN-LAST:event_OKButtonActionPerformed
+    
+        public class MENUButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            MenuPrincipalFrame obj = new MenuPrincipalFrame();
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+        
+        
+        public class VOLVERButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            MenuAnadirFrame obj = new MenuAnadirFrame();
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }    
+    
+    
+    public class OKButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e1) {
+            getValue = PRODUCTORTextField.getText();
+            AnadirProductor obj = new AnadirProductor();
+            ProgramasExcel programasExcel = new ProgramasExcel();
+            try {
+                programasExcel.comprobarColumna("Productor", getValue);
+            } catch (IOException ex) {
+                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidFormatException ex) {
+                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+
 
     /**
      * @param args the command line arguments

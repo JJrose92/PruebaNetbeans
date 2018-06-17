@@ -6,6 +6,7 @@
 package excel;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,28 +30,29 @@ public class ProgramasExcel {
 
     private static final Logger LOGGER = Logger.getLogger("newexcel.ExcelOOXML");
     private Workbook workbook = new XSSFWorkbook();
-    private File archivo = new File("reporte.xlsx");
+    private String nombreArchivo = "reporte.xlsx";
 
-    public void comprobarExcel() {
+    public void comprobarExcel() throws IOException {
+        File archivo = new File(nombreArchivo);
         if (!archivo.exists()) {
             crearExcel();
         }
     }
 
     public void CrearHoja(String hoja, String nombre) throws IOException, InvalidFormatException {
-        
-        workbook = WorkbookFactory.create(archivo);
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
         if (comprobarHoja(hoja)) {
-            if (!comprobarColumna(hoja)) {
+            if (!esColumnaVacia(hoja)) {
                 anadirValorColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(archivo);
+            FileOutputStream salida = new FileOutputStream(nombreArchivo);
             workbook.write(salida);
             workbook.close();
             } else {
 
  
             crearColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(archivo);
+            FileOutputStream salida = new FileOutputStream(nombreArchivo);
             workbook.write(salida);
             workbook.close();
 
@@ -60,55 +62,76 @@ public class ProgramasExcel {
             workbook.createSheet(hoja);
             anadirValorColumna(hoja, nombre);
             crearColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(archivo);
+            FileOutputStream salida = new FileOutputStream(nombreArchivo);
             workbook.write(salida);
             workbook.close();
         }
     }
 
-    public void anadirValorColumna(String hoja, String nombre) {
-        XSSFSheet sheet = (XSSFSheet) workbook.getSheet(hoja);
-        Row row = sheet.getRow(0);
-        short lastCellNum = row.getLastCellNum();
-        Cell createCell = row.createCell(lastCellNum + 1);
+    public void anadirValorColumna(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet(hoja);
+        int fila = 0;
+        Iterator<Row> iterator = sheet.iterator();
+        while(iterator.hasNext()){
+            fila = iterator.next().getRowNum();
+        }
+        Row row = sheet.createRow(fila+1);
+        Cell createCell = row.createCell(0);
         createCell.setCellValue(nombre);
+                FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
     }
 
-    public void crearColumna(String hoja, String nombre) {
+    public void crearColumna(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         Row row = sheet.createRow(0);
+        Row row1 = sheet.createRow(1);
         Cell titulo = row.createCell(0);
-        Cell palabra = row.createCell(1);
+        Cell palabra = row1.createCell(0);
         titulo.setCellValue(hoja);
         palabra.setCellValue(nombre);
-
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
     }
 
     public boolean comprobarHoja(String hoja) {
-        int numberOfSheets = workbook.getNumberOfSheets();
-        
         int sheetIndex = workbook.getSheetIndex(hoja);
-        int sheetIndex2 = workbook.getSheetIndex("Carlos");
-        Boolean encontrado = false;
+        return sheetIndex != -1;
         /*while ((sheetIterator.hasNext()) && !(encontrado)) {
             Sheet next = sheetIterator.next();
             String sheetName = next.getSheetName();
             encontrado = sheetName.equalsIgnoreCase(hoja);
         }
 */ 
-        encontrado = sheetIndex != -1;
-        return encontrado;
+        
     }
 
-    public boolean comprobarColumna(String hoja) {
+    public boolean esColumnaVacia(String hoja) {
+        
         Sheet sheet = workbook.getSheet(hoja);
-        short height = sheet.getRow(0).getHeight();
-        return height == 0;
+        Row row = sheet.getRow(0);
+        return row== null;
+        
+    }
+    
+    public void comprobarColumna(String hoja, String Nombre) throws FileNotFoundException, IOException, InvalidFormatException{
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        if (esColumnaVacia(hoja)){
+            crearColumna(hoja, Nombre);
+        }else{
+            anadirValorColumna(hoja, Nombre);
+        }
     }
 
     
-    public void crearExcel() {
-
+    public void crearExcel() throws FileNotFoundException, IOException {
 
         // Creamos el libro de trabajo de Excel formato OOXML
         workbook.createSheet("Productor");
@@ -120,7 +143,7 @@ public class ProgramasExcel {
             // Creamos el flujo de salida de datos,
             // apuntando al archivo donde queremos 
             // almacenar el libro de Excel
-            FileOutputStream salida = new FileOutputStream(archivo);
+            FileOutputStream salida = new FileOutputStream(nombreArchivo);
 
             // Almacenamos el libro de 
             // Excel via ese 
@@ -130,12 +153,21 @@ public class ProgramasExcel {
             // Cerramos el libro para concluir operaciones
             
 
-            LOGGER.log(Level.INFO, "Archivo creado existosamente en {0}", archivo.getAbsolutePath());
+            LOGGER.log(Level.INFO, "Archivo creado existosamente en {0}");
 
         } catch (FileNotFoundException ex) {
             LOGGER.log(Level.SEVERE, "Archivo no localizable en sistema de archivos");
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, "Error de entrada/salida");
         }
+    }
+
+    public void anadirHoja(String lista) throws FileNotFoundException, IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        workbook.createSheet(lista);
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
     }
 }

@@ -183,9 +183,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            AnadirVariado obj = new AnadirVariado();
-            opcion = "Pelicula";
-            obj.AnadirVariado(opcion);
+            AnadirPelicula obj = new AnadirPelicula();
             obj.setVisible(true);
             dispose();
         } 

@@ -23,16 +23,11 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
      * Creates new form MenuFrame
      */
     public MenuPrincipalFrame() {
-        initComponents();
-        //OKButton e1 = new OKButton();
-        MENUButton e2 = new MENUButton();
-        VOLVERButton e3 = new VOLVERButton();
-        AnadirVariado obj = new AnadirVariado();
-        /*obj.
-        OKButton.addActionListener(e1);
-        MENUButton.addActionListener(e2);
-        VOLVERButton.addActionListener(e3);
-        */
+        initComponents();     
+        Anadir e1 = new Anadir();
+        Editar e2 = new Editar();
+        ANADIRButton.addActionListener(e1);
+        EDITARButton.addActionListener(e2);
     }
 
     /**
@@ -116,51 +111,28 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ELIMINARButtonActionPerformed
 
-    public class MENUButton implements ActionListener {
+    public class Anadir implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e2) {
-            MenuPrincipalFrame obj = new MenuPrincipalFrame();
-            obj.setVisible(true);
-            dispose();
-        }
-
-    }
-
-    public class VOLVERButton implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e2) {
+        public void actionPerformed(ActionEvent e1) {
             MenuAnadirFrame obj = new MenuAnadirFrame();
             obj.setVisible(true);
             dispose();
         }
 
     }
-/*
-    public class OKButton implements ActionListener {
+
+    public class Editar implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e1) {
-            getValue = PRODUCTORTextField.getText();
-            AnadirProductor obj = new AnadirProductor();
-            ProgramasExcel programasExcel = new ProgramasExcel();
-            try {
-                if (!programasExcel.PerteneceNombreAHoja("Productor", getValue)) {
-                    programasExcel.comprobarColumna("Productor", getValue);
-                } else {
-                    obj.setVisible(false);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        public void actionPerformed(ActionEvent e2) {
+            MenuEditar obj = new MenuEditar();
             obj.setVisible(true);
             dispose();
         }
 
-    */
+    }
+
     
     /**
      * @param args the command line arguments

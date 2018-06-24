@@ -13,21 +13,32 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
  *
  * @author Juan
  */
-public class AnadirProductor extends javax.swing.JFrame {
+public class AnadirVariado extends javax.swing.JFrame {
+
+    public String getjLabelProductor() {
+        return jLabel.getText();
+    }
+
+    public void setjLabelProductor(String opcion) {
+        this.jLabel.setText(opcion);
+    }
 
     private String getValue;
 
     /**
      * Creates new form AnadirProductor
      */
-    public AnadirProductor() {
+    public void AnadirVariado(String opcion) {
         initComponents();
+        setjLabelProductor(opcion);
+        InicializarJDialog();
         OKButton e1 = new OKButton();
         MENUButton e2 = new MENUButton();
         VOLVERButton e3 = new VOLVERButton();
@@ -36,6 +47,8 @@ public class AnadirProductor extends javax.swing.JFrame {
         VOLVERButton.addActionListener(e3);
 
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +60,7 @@ public class AnadirProductor extends javax.swing.JFrame {
     private void initComponents() {
 
         PRODUCTORTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel = new javax.swing.JLabel();
         MENUButton = new javax.swing.JButton();
         VOLVERButton = new javax.swing.JButton();
         OKButton = new JButton("");
@@ -61,7 +74,7 @@ public class AnadirProductor extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Productor:");
+        jLabel.setToolTipText("");
 
         MENUButton.setText("MENU");
         MENUButton.setToolTipText("");
@@ -84,8 +97,8 @@ public class AnadirProductor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 46, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addGap(0, 97, Short.MAX_VALUE)
+                        .addComponent(jLabel)
                         .addGap(32, 32, 32)
                         .addComponent(PRODUCTORTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))
@@ -103,7 +116,7 @@ public class AnadirProductor extends javax.swing.JFrame {
                 .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PRODUCTORTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MENUButton)
@@ -111,8 +124,6 @@ public class AnadirProductor extends javax.swing.JFrame {
                     .addComponent(OKButton))
                 .addContainerGap())
         );
-
-        PRODUCTORTextField.getAccessibleContext().setAccessibleParent(OKButton);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,8 +136,16 @@ public class AnadirProductor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MENUButtonActionPerformed
 
-    
-        public class MENUButton implements ActionListener {
+    public void InicializarJDialog() {
+        JLabel label = new JLabel(getjLabelProductor() + " añadido anteriormente");
+        dialog.setLocationRelativeTo(null);
+        dialog.setTitle(getjLabelProductor()+ " ya añadido");
+        dialog.add(label);
+        dialog.pack();
+        dialog.setBounds(500, 500, 200, 100);
+    }
+
+    public class MENUButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -136,9 +155,8 @@ public class AnadirProductor extends javax.swing.JFrame {
         }
 
     }
-        
-        
-        public class VOLVERButton implements ActionListener {
+
+    public class VOLVERButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -147,29 +165,33 @@ public class AnadirProductor extends javax.swing.JFrame {
             dispose();
         }
 
-    }    
-    
-    
+    }
+
     public class OKButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
             getValue = PRODUCTORTextField.getText();
-            AnadirProductor obj = new AnadirProductor();
+            AnadirVariado obj = new AnadirVariado();
             ProgramasExcel programasExcel = new ProgramasExcel();
             try {
-                programasExcel.comprobarColumna("Productor", getValue);
+                if (!programasExcel.PerteneceNombreAHoja(getjLabelProductor(), getValue)) {
+                    programasExcel.comprobarColumna(getjLabelProductor(), getValue);
+                } else {
+                    obj.setVisible(false);
+                    dialog.setVisible(true);
+                }
             } catch (IOException ex) {
-                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InvalidFormatException ex) {
-                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
             }
+            obj.AnadirVariado(getjLabelProductor());
             obj.setVisible(true);
             dispose();
         }
 
     }
-
 
     /**
      * @param args the command line arguments
@@ -188,29 +210,31 @@ public class AnadirProductor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirProductor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVariado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirProductor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVariado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirProductor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVariado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirProductor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVariado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnadirProductor().setVisible(true);
+                new AnadirVariado().setVisible(true);
             }
         });
     }
 
+    private JDialog dialog = new JDialog();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MENUButton;
     private javax.swing.JButton OKButton;
     private javax.swing.JTextField PRODUCTORTextField;
     private javax.swing.JButton VOLVERButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel;
     // End of variables declaration//GEN-END:variables
 }

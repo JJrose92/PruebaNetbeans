@@ -27,8 +27,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
+                      <Component id="jLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="PRODUCTORTextField" min="-2" pref="174" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
               <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PRODUCTORTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="116" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -69,18 +69,13 @@
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="OKButton"/>
-        </Property>
-      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PRODUCTORTextFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Productor:"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="MENUButton">

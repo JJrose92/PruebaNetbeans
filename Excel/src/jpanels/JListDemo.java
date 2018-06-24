@@ -5,17 +5,48 @@
  */
 package jpanels;
 
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author Juan
  */
-public class AnadirPelicula extends javax.swing.JFrame {
+public class JListDemo extends JFrame {
 
     /**
-     * Creates new form AnadirPelicula
+     * Creates new form JListDemo
      */
-    public AnadirPelicula() {
-        initComponents();
+public JListDemo() {
+
+        setSize(new Dimension(300, 300));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        final JLabel label = new JLabel("Update");
+        String[] data = { "one", "two", "three", "four" };
+        final JList dataList = new JList(data);
+
+        dataList.addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  label.setText(dataList.getSelectedValue().toString());
+                }
+            }
+        });
+        add(dataList);
+        add(label);
+
+        setVisible(true);
+
     }
 
     /**
@@ -60,22 +91,18 @@ public class AnadirPelicula extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirPelicula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JListDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirPelicula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JListDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirPelicula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JListDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirPelicula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JListDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AnadirPelicula().setVisible(true);
-            }
-        });
+            new JListDemo();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

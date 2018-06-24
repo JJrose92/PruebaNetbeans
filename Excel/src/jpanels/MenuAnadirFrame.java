@@ -5,6 +5,9 @@
  */
 package jpanels;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Juan
@@ -16,6 +19,16 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
      */
     public MenuAnadirFrame() {
         initComponents();
+        Menu e1 = new Menu();
+        Productor e2 = new Productor();
+        Pelicula e3 = new Pelicula();
+        Director e4 = new Director();
+        Productor e5 = new Productor();
+        MENUButton.addActionListener(e1);
+        ANADIRProductor.addActionListener(e2);
+        ANADIRPelicula.addActionListener(e3);
+        ANADIRDirector.addActionListener(e4);
+        ANADIRPais.addActionListener(e5);
     }
 
     /**
@@ -27,46 +40,59 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ANADIRPelicula = new javax.swing.JButton();
+        ANADIRDirector = new javax.swing.JButton();
+        ANADIRProductor = new javax.swing.JButton();
+        ANADIRPais = new javax.swing.JButton();
+        MENUButton = new javax.swing.JButton();
+        ANADIRGenero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Añadir Pelicula");
-        jButton1.setToolTipText("");
-        jButton1.setActionCommand("botonAnadirPelicula");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ANADIRPelicula.setText("Añadir Pelicula");
+        ANADIRPelicula.setToolTipText("");
+        ANADIRPelicula.setActionCommand("botonAnadirPelicula");
+        ANADIRPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ANADIRPeliculaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Añadir Director");
-        jButton2.setToolTipText("");
-        jButton2.setActionCommand("botonAnadirDirector");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ANADIRDirector.setText("Añadir Director");
+        ANADIRDirector.setToolTipText("");
+        ANADIRDirector.setActionCommand("botonAnadirDirector");
+        ANADIRDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ANADIRDirectorActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Añadir Productor");
-        jButton3.setToolTipText("");
-        jButton3.setActionCommand("botonAnadirProductor");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ANADIRProductor.setText("Añadir Productor");
+        ANADIRProductor.setToolTipText("");
+        ANADIRProductor.setActionCommand("botonAnadirProductor");
+        ANADIRProductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ANADIRProductorActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Añadir Productor");
-        jButton4.setToolTipText("");
-        jButton4.setActionCommand("botonAnadirProductor");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ANADIRPais.setText("Añadir Pais");
+        ANADIRPais.setToolTipText("");
+        ANADIRPais.setActionCommand("botonAnadirProductor");
+        ANADIRPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ANADIRPaisActionPerformed(evt);
+            }
+        });
+
+        MENUButton.setText("MENU");
+
+        ANADIRGenero.setText("Añadir Género");
+        ANADIRGenero.setToolTipText("");
+        ANADIRGenero.setActionCommand("botonAnadirPelicula");
+        ANADIRGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ANADIRGeneroActionPerformed(evt);
             }
         });
 
@@ -75,47 +101,121 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ANADIRPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANADIRDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANADIRProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANADIRPais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANADIRGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(MENUButton)))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jButton3)
-                .addGap(39, 39, 39)
-                .addComponent(jButton4)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(ANADIRPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ANADIRDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ANADIRProductor)
+                .addGap(18, 18, 18)
+                .addComponent(ANADIRPais)
+                .addGap(18, 18, 18)
+                .addComponent(ANADIRGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(MENUButton)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ANADIRPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ANADIRPeliculaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ANADIRDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRDirectorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ANADIRDirectorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ANADIRProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRProductorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ANADIRProductorActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ANADIRPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRPaisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ANADIRPaisActionPerformed
 
+    private void ANADIRGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ANADIRGeneroActionPerformed
+
+        public class Menu implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e1) {
+            MenuPrincipalFrame obj = new MenuPrincipalFrame();
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+        
+        public class Productor implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Productor";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        } 
+}
+        
+        public class Pelicula implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e3) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Pelicula";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        } 
+}
+        
+        public class Director implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e4) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Director";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        } 
+}
+                
+        public class Pais implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e5) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Pais";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        } 
+}
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -153,11 +253,13 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    private String opcion;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton ANADIRDirector;
+    private javax.swing.JButton ANADIRGenero;
+    private javax.swing.JButton ANADIRPais;
+    private javax.swing.JButton ANADIRPelicula;
+    private javax.swing.JButton ANADIRProductor;
+    private javax.swing.JButton MENUButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,7 +26,8 @@ public class ProgramaPrincipal {
             
 
         pex.comprobarExcel();
-        pex.anadirHoja("Lista");
+            String[] devolverNombres = pex.devolverNombres("Productor");
+        pex.PerteneceNombreAHoja("Productor", "Spielberg");
         //pex.CrearHoja("Productor", "Dicaprio");
         //pex.comprobarColumna("Productor", "Spielberg");
         

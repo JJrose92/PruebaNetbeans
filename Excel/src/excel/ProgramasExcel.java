@@ -45,20 +45,19 @@ public class ProgramasExcel {
         if (comprobarHoja(hoja)) {
             if (!esColumnaVacia(hoja)) {
                 anadirValorColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(nombreArchivo);
-            workbook.write(salida);
-            workbook.close();
+                FileOutputStream salida = new FileOutputStream(nombreArchivo);
+                workbook.write(salida);
+                workbook.close();
             } else {
 
- 
-            crearColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(nombreArchivo);
-            workbook.write(salida);
-            workbook.close();
+                crearColumna(hoja, nombre);
+                FileOutputStream salida = new FileOutputStream(nombreArchivo);
+                workbook.write(salida);
+                workbook.close();
 
             }
 
-        }else {
+        } else {
             workbook.createSheet(hoja);
             anadirValorColumna(hoja, nombre);
             crearColumna(hoja, nombre);
@@ -74,13 +73,13 @@ public class ProgramasExcel {
         Sheet sheet = workbook.getSheet(hoja);
         int fila = 0;
         Iterator<Row> iterator = sheet.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             fila = iterator.next().getRowNum();
         }
-        Row row = sheet.createRow(fila+1);
+        Row row = sheet.createRow(fila + 1);
         Cell createCell = row.createCell(0);
         createCell.setCellValue(nombre);
-                FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
@@ -108,36 +107,79 @@ public class ProgramasExcel {
             String sheetName = next.getSheetName();
             encontrado = sheetName.equalsIgnoreCase(hoja);
         }
-*/ 
-        
+         */
+
+    }
+
+    public boolean PerteneceNombreAHoja(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet(hoja);
+        boolean encontrado = false;
+        Iterator<Row> iterator = sheet.iterator();
+        while (!encontrado && iterator.hasNext()) {
+            Cell cell = iterator.next().getCell(0);
+            String stringCellValue = cell.getStringCellValue();
+            encontrado = stringCellValue.equalsIgnoreCase(nombre);
+        }
+
+        return encontrado;
     }
 
     public boolean esColumnaVacia(String hoja) {
-        
+
         Sheet sheet = workbook.getSheet(hoja);
         Row row = sheet.getRow(0);
-        return row== null;
-        
+        return row == null;
+
     }
-    
-    public void comprobarColumna(String hoja, String Nombre) throws FileNotFoundException, IOException, InvalidFormatException{
+
+    public void comprobarColumna(String hoja, String Nombre) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
-        if (esColumnaVacia(hoja)){
+        if (esColumnaVacia(hoja)) {
             crearColumna(hoja, Nombre);
-        }else{
+        } else {
             anadirValorColumna(hoja, Nombre);
         }
     }
 
-    
+    public String[] devolverNombres(String hoja) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        String name[] = null;
+        int x = 0;
+        if (comprobarHoja(hoja)) {
+            if (!esColumnaVacia(hoja)) {
+                Sheet sheet = workbook.getSheet(hoja);
+                Iterator<Row> rowIterator = sheet.rowIterator();
+                int lastRowNum = sheet.getLastRowNum();
+                name = new String[lastRowNum];
+                rowIterator.next();
+                while (rowIterator.hasNext()) {
+                    Cell cell = rowIterator.next().getCell(0);
+                    String stringCellValue = cell.getStringCellValue();
+                    name[x] = stringCellValue;
+                    x++;
+                }
+
+                return name;
+            }
+            return name;
+        }
+        return name;
+    }
+
     public void crearExcel() throws FileNotFoundException, IOException {
 
         // Creamos el libro de trabajo de Excel formato OOXML
         workbook.createSheet("Productor");
         workbook.createSheet("Director");
         workbook.createSheet("Guionista");
-        
+        workbook.createSheet("Pais");
+        workbook.createSheet("Genero");
+        workbook.createSheet("Pelicula");
+
         // La hoja donde pondremos los datos
         try {
             // Creamos el flujo de salida de datos,
@@ -151,7 +193,6 @@ public class ProgramasExcel {
             workbook.write(salida);
             workbook.close();
             // Cerramos el libro para concluir operaciones
-            
 
             LOGGER.log(Level.INFO, "Archivo creado existosamente en {0}");
 

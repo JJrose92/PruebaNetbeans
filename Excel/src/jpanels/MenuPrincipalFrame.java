@@ -5,6 +5,14 @@
  */
 package jpanels;
 
+import excel.ProgramasExcel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 /**
  *
  * @author Juan
@@ -16,6 +24,15 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
      */
     public MenuPrincipalFrame() {
         initComponents();
+        //OKButton e1 = new OKButton();
+        MENUButton e2 = new MENUButton();
+        VOLVERButton e3 = new VOLVERButton();
+        AnadirVariado obj = new AnadirVariado();
+        /*obj.
+        OKButton.addActionListener(e1);
+        MENUButton.addActionListener(e2);
+        VOLVERButton.addActionListener(e3);
+        */
     }
 
     /**
@@ -27,36 +44,36 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ANADIRButton = new javax.swing.JButton();
+        EDITARButton = new javax.swing.JButton();
+        ELIMINARButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Añadir");
-        jButton1.setToolTipText("");
-        jButton1.setActionCommand("botonAnadir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ANADIRButton.setText("Añadir");
+        ANADIRButton.setToolTipText("");
+        ANADIRButton.setActionCommand("botonAnadir");
+        ANADIRButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ANADIRButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Editar");
-        jButton2.setToolTipText("");
-        jButton2.setActionCommand("botonEditar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        EDITARButton.setText("Editar");
+        EDITARButton.setToolTipText("");
+        EDITARButton.setActionCommand("botonEditar");
+        EDITARButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                EDITARButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.setToolTipText("");
-        jButton3.setActionCommand("botonEliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ELIMINARButton.setText("Eliminar");
+        ELIMINARButton.setToolTipText("");
+        ELIMINARButton.setActionCommand("botonEliminar");
+        ELIMINARButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ELIMINARButtonActionPerformed(evt);
             }
         });
 
@@ -67,39 +84,84 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ANADIRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EDITARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ELIMINARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ANADIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EDITARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(ELIMINARButton)
                 .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ANADIRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ANADIRButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void EDITARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDITARButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_EDITARButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ELIMINARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ELIMINARButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ELIMINARButtonActionPerformed
 
+    public class MENUButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            MenuPrincipalFrame obj = new MenuPrincipalFrame();
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+
+    public class VOLVERButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            MenuAnadirFrame obj = new MenuAnadirFrame();
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+/*
+    public class OKButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e1) {
+            getValue = PRODUCTORTextField.getText();
+            AnadirProductor obj = new AnadirProductor();
+            ProgramasExcel programasExcel = new ProgramasExcel();
+            try {
+                if (!programasExcel.PerteneceNombreAHoja("Productor", getValue)) {
+                    programasExcel.comprobarColumna("Productor", getValue);
+                } else {
+                    obj.setVisible(false);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidFormatException ex) {
+                Logger.getLogger(AnadirProductor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            obj.setVisible(true);
+            dispose();
+        }
+
+    */
+    
     /**
      * @param args the command line arguments
      */
@@ -137,8 +199,8 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton ANADIRButton;
+    private javax.swing.JButton EDITARButton;
+    private javax.swing.JButton ELIMINARButton;
     // End of variables declaration//GEN-END:variables
 }

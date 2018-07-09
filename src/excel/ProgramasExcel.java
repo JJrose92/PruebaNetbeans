@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,6 +68,18 @@ public class ProgramasExcel {
         }
     }
 
+    public ArrayList nombresHojas() throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        ArrayList arrayList = new ArrayList();
+        Iterator<Sheet> sheetIterator = workbook.sheetIterator();
+        while (sheetIterator.hasNext()) {
+            arrayList.add(sheetIterator.next().getSheetName());
+        }
+        arrayList.remove("Pelicula");
+        return arrayList;
+    }
+
     public void anadirValorColumna(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
@@ -105,18 +118,74 @@ public class ProgramasExcel {
 
     }
 
-    public void comprobarColumnaPelicula(String hoja, String nombre) throws IOException, InvalidFormatException {
+    public void comprobarColumnaPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         if (esColumnaVacia(hoja)) {
-            crearColumna(hoja, nombre);
+            crearColumnaPelicula(hoja, lista);
         } else {
-            //anadirPelicula(hoja, nombre);
+            anadirPelicula(hoja, lista);
         }
     }
 
-    public void anadirPelicula(String hoja, String nombre, String genero, String ano, String director, String productor, String pais) {
+    public void crearColumnaPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet(hoja);
+        Cell createCell;
+        int fila = 0;
+        int celda = 0;
+        Row row = sheet.createRow(0);
+        Row row1 = sheet.createRow(1);
+        createCell = row.createCell(0);
+        createCell.setCellValue("Nombre Pelicula");
+        createCell = row.createCell(1);
+        createCell.setCellValue("Genero");
+        createCell = row.createCell(2);
+        createCell.setCellValue("Director");
+        createCell = row.createCell(3);
+        createCell.setCellValue("Pais");
+        createCell = row.createCell(4);
+        createCell.setCellValue("Productor");
+        createCell = row.createCell(5);
+        createCell.setCellValue("Año");
+        createCell = row.createCell(6);
+        createCell.setCellValue("Nota");
 
+        Iterator iterator1 = lista.iterator();
+        while (iterator1.hasNext()) {
+            createCell = row1.createCell(celda);
+            Object next = iterator1.next();
+            createCell.setCellValue(next.toString());
+            celda++;
+        }
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
+    }
+
+    public void anadirPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet(hoja);
+        Cell createCell;
+        int fila = 0;
+        int celda = 0;
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            fila = iterator.next().getRowNum();
+        }
+        Row row = sheet.createRow(fila + 1);
+        Iterator iterator1 = lista.iterator();
+        while (iterator1.hasNext()) {
+            createCell = row.createCell(celda);
+            Object next = iterator1.next();
+            createCell.setCellValue(next.toString());
+            celda++;
+        }
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
     }
 
     public boolean PerteneceNombreAHoja(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
@@ -135,11 +204,9 @@ public class ProgramasExcel {
     }
 
     public boolean esColumnaVacia(String hoja) {
-
         Sheet sheet = workbook.getSheet(hoja);
         Row row = sheet.getRow(0);
         return row == null;
-
     }
 
     public void comprobarColumna(String hoja, String Nombre) throws IOException, InvalidFormatException {
@@ -181,12 +248,11 @@ public class ProgramasExcel {
     public void crearExcel() throws FileNotFoundException, IOException {
 
         // Creamos el libro de trabajo de Excel formato OOXML
-        workbook.createSheet("Productor");
-        workbook.createSheet("Director");
-        workbook.createSheet("Guionista");
-        workbook.createSheet("Pais");
-        workbook.createSheet("Genero");
         workbook.createSheet("Nombre Pelicula");
+        workbook.createSheet("Genero");
+        workbook.createSheet("Director");
+        workbook.createSheet("Pais");
+        workbook.createSheet("Productor");
         workbook.createSheet("Pelicula");
 
         // La hoja donde pondremos los datos

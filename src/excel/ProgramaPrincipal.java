@@ -23,7 +23,7 @@ public class ProgramaPrincipal {
             
 
         pex.comprobarExcel();
-
+        pex.nombresHojas();
 
         
         

@@ -26,11 +26,19 @@ public class MenuEditar extends javax.swing.JFrame {
      */
     public MenuEditar() {
         initComponents();
-        EditarProductorSub e1 = new EditarProductorSub();
-        EditarDirectorSub e2 = new EditarDirectorSub();
+        EditarNombrePeliculaSub e1 = new EditarNombrePeliculaSub();
+        EditarGeneroSub e2 = new EditarGeneroSub();
+        EditarDirectorSub e3 = new EditarDirectorSub();
+        EditarPaisSub e4 = new EditarPaisSub();
+        EditarProductorSub e5 = new EditarProductorSub();
+
         EditarListaSub e7 = new EditarListaSub();
-        EditarProductor.addActionListener(e1);
-        EditarDirector.addActionListener(e2);
+        EditarNombrePelicula.addActionListener(e1);
+        EditarGenero.addActionListener(e2);
+        EditarDirector.addActionListener(e3);
+        EditarPais.addActionListener(e4);
+        EditarProductor.addActionListener(e5);
+
         Lista.addListSelectionListener(e7);
     }
 
@@ -48,17 +56,12 @@ public class MenuEditar extends javax.swing.JFrame {
         EditarProductor = new javax.swing.JButton();
         EditarDirector = new javax.swing.JButton();
         EditarPais = new javax.swing.JButton();
-        EditarMusica = new javax.swing.JButton();
         EditarNombrePelicula = new javax.swing.JButton();
         EditarGenero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Lista.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        Lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListaElementos.setViewportView(Lista);
 
         EditarProductor.setText("Productores");
@@ -73,8 +76,6 @@ public class MenuEditar extends javax.swing.JFrame {
 
         EditarPais.setText("Paises");
 
-        EditarMusica.setText("Musica");
-
         EditarNombrePelicula.setText("Nombre Pelicula");
 
         EditarGenero.setText("Géneros");
@@ -84,22 +85,23 @@ public class MenuEditar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EditarProductor)
-                    .addComponent(EditarMusica))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ListaElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EditarDirector)
-                            .addComponent(EditarNombrePelicula))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EditarGenero)
-                            .addComponent(EditarPais))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(EditarProductor)
+                        .addGap(42, 42, 42)
+                        .addComponent(ListaElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(EditarDirector)
+                        .addGap(81, 81, 81)
+                        .addComponent(EditarPais))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(EditarNombrePelicula)
+                        .addGap(59, 59, 59)
+                        .addComponent(EditarGenero)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +113,6 @@ public class MenuEditar extends javax.swing.JFrame {
                     .addComponent(EditarPais))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditarMusica)
                     .addComponent(EditarNombrePelicula)
                     .addComponent(EditarGenero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -161,34 +162,39 @@ public class MenuEditar extends javax.swing.JFrame {
         });
     }
 
-    public class EditarListaSub implements ListSelectionListener{
+    public class EditarListaSub implements ListSelectionListener {
 
         @Override
         public void valueChanged(ListSelectionEvent e7) {
-            if (e7.getValueIsAdjusting()){
+            if (e7.getValueIsAdjusting()) {
                 decision = Lista.getSelectedValue().toString();
             }
-        
+
+        }
     }
+
+    private void rellenar() {
+        ProgramasExcel pex = new ProgramasExcel();
+        Lista.removeAll();
+        try {
+            String[] devolverNombres = pex.devolverNombres(variable);
+            if (devolverNombres != null) {
+                Lista.setListData(devolverNombres);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidFormatException ex) {
+            Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    public class EditarProductorSub implements ActionListener {
+
+    public class EditarNombrePeliculaSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
-            ProgramasExcel pex = new ProgramasExcel();
-            variable="Productor";
-            Lista.removeAll();
-            try {
-                String[] devolverNombres = pex.devolverNombres(variable);
-                if (devolverNombres!=null){
-                    Lista.setListData(devolverNombres);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
+            variable = "Nombre Pelicula";
+            rellenar();
             /*MenuAnadirFrame obj = new MenuAnadirFrame();
             obj.setVisible(true);
             dispose();*/
@@ -196,35 +202,62 @@ public class MenuEditar extends javax.swing.JFrame {
 
     }
 
-        public class EditarDirectorSub implements ActionListener {
+    public class EditarGeneroSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
-            ProgramasExcel pex = new ProgramasExcel();
-            variable="Director";
-            Lista.removeAll();
-            try {
-                String[] devolverNombres = pex.devolverNombres(variable);
-                if (devolverNombres!=null){
-                    Lista.setListData(devolverNombres);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
+            variable = "Genero";
+            rellenar();
             /*MenuAnadirFrame obj = new MenuAnadirFrame();
             obj.setVisible(true);
             dispose();*/
         }
 
     }
+
+    public class EditarDirectorSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e3) {
+            variable = "Director";
+            rellenar();
+            /*MenuAnadirFrame obj = new MenuAnadirFrame();
+            obj.setVisible(true);
+            dispose();*/
+        }
+
+    }
+
+    public class EditarPaisSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e4) {
+            variable = "Pais";
+            rellenar();
+            /*MenuAnadirFrame obj = new MenuAnadirFrame();
+            obj.setVisible(true);
+            dispose();*/
+        }
+
+    }
+
+    public class EditarProductorSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e5) {
+
+            variable = "Productor";
+            rellenar();
+
+        }
+    }
+
     private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarDirector;
     private javax.swing.JButton EditarGenero;
-    private javax.swing.JButton EditarMusica;
     private javax.swing.JButton EditarNombrePelicula;
     private javax.swing.JButton EditarPais;
     private javax.swing.JButton EditarProductor;

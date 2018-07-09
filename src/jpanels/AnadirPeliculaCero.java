@@ -9,6 +9,7 @@ import excel.ProgramasExcel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -57,6 +58,8 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
         PaisjTextField = new javax.swing.JTextField();
         AnojTextField = new javax.swing.JTextField();
         GenerojTextField = new javax.swing.JTextField();
+        notajLabel = new javax.swing.JLabel();
+        notaJText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +81,8 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
         jLabel5.setText("Año:");
 
         jLabel6.setText("Genero: ");
+
+        notajLabel.setText("Nota:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,15 +107,6 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                                 .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 30, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -124,7 +120,22 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(notajLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,23 +144,18 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 99, Short.MAX_VALUE)
+                        .addGap(50, 96, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MENUButton)
-                            .addComponent(VOLVERButton)
-                            .addComponent(OKButton))
-                        .addContainerGap())
+                        .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -157,7 +163,16 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                             .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(notajLabel)
+                    .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MENUButton)
+                    .addComponent(VOLVERButton)
+                    .addComponent(OKButton))
+                .addContainerGap())
         );
 
         pack();
@@ -189,29 +204,33 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
-            ano = AnojTextField.getText();
-            director = DirectorjTextField.getText();
-            genero = GenerojTextField.getText();
-            productor = ProductorjTextField.getText();
-            nombrePelicula = NombrePelijTextField.getText();
-            pais = PaisjTextField.getText();
+            ArrayList arrayList = new ArrayList();
+            arrayList.add(NombrePelijTextField.getText());
+            arrayList.add(GenerojTextField.getText());
+            arrayList.add(DirectorjTextField.getText());
+            arrayList.add(PaisjTextField.getText());
+            arrayList.add(ProductorjTextField.getText());
+            arrayList.add(AnojTextField.getText());
+            arrayList.add(notaJText.getText());
+
             AnadirPeliculaCero obj = new AnadirPeliculaCero();
             ProgramasExcel programasExcel = new ProgramasExcel();
             try {
-                if (!programasExcel.PerteneceNombreAHoja("Nombre Pelicula", nombrePelicula)) {
-                    programasExcel.comprobarColumna("Nombre Pelicula", nombrePelicula);
-                    if (!programasExcel.PerteneceNombreAHoja("Productor", productor)) {
-                        programasExcel.comprobarColumna("Productor", productor);
+                if (!programasExcel.PerteneceNombreAHoja("Nombre Pelicula", arrayList.get(0).toString())) {
+                    programasExcel.comprobarColumna("Nombre Pelicula", arrayList.get(0).toString());
+                    if (!programasExcel.PerteneceNombreAHoja("Genero", arrayList.get(1).toString())) {
+                        programasExcel.comprobarColumna("Genero", arrayList.get(1).toString());
                     }
-                    if (!programasExcel.PerteneceNombreAHoja("Director", director)) {
-                        programasExcel.comprobarColumna("Director", director);
+                    if (!programasExcel.PerteneceNombreAHoja("Director", arrayList.get(2).toString())) {
+                        programasExcel.comprobarColumna("Director", arrayList.get(2).toString());
                     }
-                    if (!programasExcel.PerteneceNombreAHoja("Pais", pais)) {
-                        programasExcel.comprobarColumna("Pais", pais);
+                    if (!programasExcel.PerteneceNombreAHoja("Pais", arrayList.get(3).toString())) {
+                        programasExcel.comprobarColumna("Pais", arrayList.get(3).toString());
                     }
-                    if (!programasExcel.PerteneceNombreAHoja("Genero", genero)) {
-                        programasExcel.comprobarColumna("Genero", genero);
+                    if (!programasExcel.PerteneceNombreAHoja("Productor", arrayList.get(4).toString())) {
+                        programasExcel.comprobarColumna("Productor", arrayList.get(4).toString());
                     }
+                    programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
                 } else {
                     obj.setVisible(false);
                     //dialog.setVisible(true);
@@ -276,12 +295,6 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
             }
         });
     }
-    private String ano;
-    private String director;
-    private String genero;
-    private String nombrePelicula;
-    private String productor;
-    private String pais;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AnojTextField;
     private javax.swing.JTextField DirectorjTextField;
@@ -298,5 +311,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField notaJText;
+    private javax.swing.JLabel notajLabel;
     // End of variables declaration//GEN-END:variables
 }

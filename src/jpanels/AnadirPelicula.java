@@ -27,7 +27,7 @@ public class AnadirPelicula extends javax.swing.JFrame {
         VOLVERButton.addActionListener(e2);
         ANADIRCero.addActionListener(e3);
         ANADIRExistente.addActionListener(e4);
-
+        
     }
 
     /**
@@ -112,7 +112,7 @@ public class AnadirPelicula extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ANADIRCeroActionPerformed
 
-        public class Menu implements ActionListener {
+    public class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -122,40 +122,37 @@ public class AnadirPelicula extends javax.swing.JFrame {
         }
 
     }
-        
-        public class Volver implements ActionListener{
+
+    public class Volver implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
             MenuAnadirFrame obj = new MenuAnadirFrame();
             obj.setVisible(true);
             dispose();
-        } 
-}
-        
+        }
+    }
 
-        
-        public class Existente implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e3) {
-            AnadirVariado obj = new AnadirVariado();
-            obj.setVisible(true);
-            dispose();
-        } 
-}
-                
-        public class Cero implements ActionListener{
+    public class Existente implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
+            AnadirPeliculaDatos obj = new AnadirPeliculaDatos();
+            obj.setVisible(true);
+            dispose();
+        }
+    }
+
+    public class Cero implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e3) {
             AnadirPeliculaCero obj = new AnadirPeliculaCero();
             obj.setVisible(true);
             dispose();
-        } 
-}
-    
-    
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -191,12 +188,10 @@ public class AnadirPelicula extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-            
-                new AnadirPelicula().setVisible(true);
-            
-        
+        new AnadirPelicula().setVisible(true);
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ANADIRCero;
     private javax.swing.JButton ANADIRExistente;

@@ -22,9 +22,7 @@ public class ProgramaPrincipal {
         ProgramasExcel pex = new ProgramasExcel();
             
 
-        pex.comprobarExcel();
-        pex.nombresHojas();
-
+        pex.datosPelicula("Liliana te quiero mucho");
         
         
     }  

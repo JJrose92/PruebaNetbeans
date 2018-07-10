@@ -34,6 +34,7 @@ public class MenuEditar extends javax.swing.JFrame {
         EditarProductorSub e5 = new EditarProductorSub();
         OKSub e6 = new OKSub();
         EditarListaSub e7 = new EditarListaSub();
+        MENUButton e8 = new MENUButton();
         EditarNombrePelicula.addActionListener(e1);
         EditarGenero.addActionListener(e2);
         EditarDirector.addActionListener(e3);
@@ -41,6 +42,7 @@ public class MenuEditar extends javax.swing.JFrame {
         EditarProductor.addActionListener(e5);
         Lista.addListSelectionListener(e7);
         okButton.addActionListener(e6);
+        menuButton.addActionListener(e8);
     }
 
     /**
@@ -192,16 +194,41 @@ public class MenuEditar extends javax.swing.JFrame {
             }
         });
     }
-    
-    public class OKSub implements ActionListener {
+
+    public class MENUButton implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e6) {
-            EditarVariado obj = new EditarVariado(variable, decision);
+        public void actionPerformed(ActionEvent e2) {
+            MenuPrincipalFrame obj = new MenuPrincipalFrame();
             obj.setVisible(true);
             dispose();
         }
 
+    }
+
+    public class OKSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e6) {
+            ProgramasExcel pex = new ProgramasExcel();
+            boolean PerteneceNombreAHoja = false;
+            try {
+                PerteneceNombreAHoja = pex.PerteneceNombreAHoja("Pelicula", decision);
+                        } catch (IOException ex) {
+                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidFormatException ex) {
+                Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if ((variable.equalsIgnoreCase("Nombre Pelicula"))&& (PerteneceNombreAHoja)) {
+                EditarPelicula obj = new EditarPelicula(decision);
+                obj.setVisible(true);
+                dispose();
+            } else {
+                EditarVariado obj = new EditarVariado(variable, decision);
+                obj.setVisible(true);
+                dispose();
+            }
+        }
 
     }
 

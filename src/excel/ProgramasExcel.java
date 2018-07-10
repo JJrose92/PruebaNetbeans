@@ -68,6 +68,64 @@ public class ProgramasExcel {
         }
     }
 
+    public void EditarPelicula(ArrayList lista, String pelicula) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet("Pelicula");
+        boolean encontrado = false;
+        int i = 0;
+        Iterator<Row> rowIterator = sheet.rowIterator();
+        while (!encontrado && rowIterator.hasNext()) {
+            Row next = rowIterator.next();
+            String stringCellValue = next.getCell(0).getStringCellValue();
+            encontrado = stringCellValue.equalsIgnoreCase(pelicula);
+            if (encontrado) {
+                Iterator<Cell> cellIterator = next.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell next1 = cellIterator.next();
+                    next1.setCellValue(lista.get(i).toString());
+                    i++;
+                }
+            }
+        }
+        sheet = workbook.getSheet("Nombre Pelicula");
+        encontrado = false;
+        rowIterator = sheet.rowIterator();
+        while (!encontrado && rowIterator.hasNext()) {
+            Row next = rowIterator.next();
+            String stringCellValue = next.getCell(0).getStringCellValue();
+            encontrado = stringCellValue.equalsIgnoreCase(pelicula);
+            if (encontrado) {
+                next.getCell(0).setCellValue(lista.get(0).toString());
+            }
+        }
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
+    }
+    
+    public ArrayList datosPelicula(String Pelicula) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        ArrayList arrayList = new ArrayList();
+        Sheet sheet = workbook.getSheet("Pelicula");
+        Iterator<Row> iterator = sheet.iterator();
+        boolean encontrado = false;
+        while (!encontrado && iterator.hasNext()) {
+            Row next = iterator.next();
+            encontrado = Pelicula.equalsIgnoreCase(next.getCell(0).getStringCellValue());
+            if (encontrado) {
+                Iterator<Cell> cellIterator = next.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell next1 = cellIterator.next();
+                    arrayList.add(next1.getStringCellValue());
+                }
+            }
+        }
+        workbook.close();
+        return arrayList;
+    }
+
     public ArrayList nombresHojas() throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);

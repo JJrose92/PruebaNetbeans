@@ -118,6 +118,48 @@ public class ProgramasExcel {
 
     }
 
+    public void editarNombre(String hoja, String palabra, String nuevaPalabra) throws IOException, InvalidFormatException {
+        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        workbook = WorkbookFactory.create(fisNew);
+        Sheet sheet = workbook.getSheet(hoja);
+        Iterator<Row> iterator = sheet.iterator();
+        boolean encontrado = false;
+        while (!encontrado && iterator.hasNext()) {
+            Row next = iterator.next();
+            String cellFormula = next.getCell(0).getStringCellValue();
+            encontrado = cellFormula.equalsIgnoreCase(palabra);
+            if (encontrado) {
+                next.getCell(0).setCellValue(nuevaPalabra);
+            }
+        }
+        sheet = workbook.getSheet("Pelicula");
+        iterator = sheet.iterator();
+        encontrado = false;
+        Row row = sheet.getRow(0);
+        Iterator<Cell> cellIterator = row.cellIterator();
+        int i = 0;
+        while (!encontrado && cellIterator.hasNext()) {
+            String cellFormula = cellIterator.next().getStringCellValue();
+            encontrado = cellFormula.equalsIgnoreCase(hoja);
+            if (!encontrado) {
+                i++;
+            }
+        }
+        encontrado = false;
+        while (!encontrado && iterator.hasNext()) {
+            Row next = iterator.next();
+            String cellFormula = next.getCell(i).getStringCellValue();
+            encontrado = cellFormula.equalsIgnoreCase(palabra);
+            if (encontrado) {
+                next.getCell(i).setCellValue(nuevaPalabra);
+            }
+        }
+
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
+    }
+
     public void comprobarColumnaPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);

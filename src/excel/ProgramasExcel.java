@@ -292,14 +292,15 @@ public class ProgramasExcel {
             }
         }
         sheet = workbook.getSheet(var_pelicula);
-
+        
         if (!esColumnaVacia(var_pelicula)) {
             encontrado = false;
             int i = 0;
             int k = 0;
+            String sheetName = sheet.getSheetName();
             Iterator<Row> iterator1 = sheet.iterator();
             while (iterator1.hasNext()) {
-                Row next = iterator.next();
+                Row next = iterator1.next();
                 if (k == 0) {
                     Iterator<Cell> cellIterator = next.cellIterator();
                     while (!encontrado && cellIterator.hasNext()) {

@@ -7,6 +7,7 @@ package excel;
 
 
 import java.io.IOException;
+import jpanels.MenuPrincipalFrame;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -17,15 +18,16 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  */
 public class ProgramaPrincipal {
     
-        public static void main(String[] args) throws IOException, InvalidFormatException {
-        
-        ProgramasExcel pex = new ProgramasExcel();
-            
-
-        pex.datosPelicula("Liliana te quiero mucho");
+     public static void main(String[] args) throws IOException, InvalidFormatException {
         
         
-    }  
+         MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
+         menuPrincipalFrame.setVisible(true);
+         
+        
+        
+        
+   }  
     
     
 }

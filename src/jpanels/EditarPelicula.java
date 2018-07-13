@@ -220,7 +220,7 @@ public class EditarPelicula extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
-            AnadirPelicula obj = new AnadirPelicula();
+            MenuEditar obj = new MenuEditar();
             obj.setVisible(true);
             dispose();
         }

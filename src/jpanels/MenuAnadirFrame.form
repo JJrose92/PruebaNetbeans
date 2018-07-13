@@ -26,6 +26,10 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="MENUButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="ANADIRPelicula" max="32767" attributes="0"/>
@@ -33,14 +37,11 @@
                           <Component id="ANADIRProductor" alignment="0" max="32767" attributes="0"/>
                           <Component id="ANADIRPais" alignment="0" max="32767" attributes="0"/>
                           <Component id="ANADIRGenero" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ANADIRNombrePelicula" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="MENUButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="187" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,7 +50,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="ANADIRPelicula" min="-2" pref="23" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <Component id="ANADIRNombrePelicula" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="ANADIRDirector" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="ANADIRProductor" min="-2" max="-2" attributes="0"/>
@@ -57,7 +60,7 @@
               <Component id="ANADIRPais" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="ANADIRGenero" min="-2" pref="23" max="-2" attributes="0"/>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="MENUButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -119,6 +122,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ANADIRGeneroActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ANADIRNombrePelicula">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xf1;adir Nombre Pelicula"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

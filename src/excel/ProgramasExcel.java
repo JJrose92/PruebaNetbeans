@@ -298,7 +298,7 @@ public class ProgramasExcel {
             int i = 0;
             int k = 0;
             Iterator<Row> iterator1 = sheet.iterator();
-            while (!encontrado && iterator1.hasNext()) {
+            while (iterator1.hasNext()) {
                 Row next = iterator.next();
                 if (k == 0) {
                     Iterator<Cell> cellIterator = next.cellIterator();
@@ -310,7 +310,6 @@ public class ProgramasExcel {
                         }
                     }
                     k++;
-                    encontrado = false;
                 } else {
                     String cellFormula = next.getCell(i).getStringCellValue();
                     encontrado = cellFormula.equalsIgnoreCase(palabra);

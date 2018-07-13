@@ -20,15 +20,20 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
     public MenuAnadirFrame() {
         initComponents();
         Menu e1 = new Menu();
+
         Productor e2 = new Productor();
         Pelicula e3 = new Pelicula();
         Director e4 = new Director();
         Productor e5 = new Productor();
+        Nombre_Pelicula e6 = new Nombre_Pelicula();
+        Genero e7 = new Genero();
         MENUButton.addActionListener(e1);
         ANADIRProductor.addActionListener(e2);
         ANADIRPelicula.addActionListener(e3);
         ANADIRDirector.addActionListener(e4);
         ANADIRPais.addActionListener(e5);
+        ANADIRNombrePelicula.addActionListener(e6);
+        ANADIRGenero.addActionListener(e7);
     }
 
     /**
@@ -46,6 +51,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         ANADIRPais = new javax.swing.JButton();
         MENUButton = new javax.swing.JButton();
         ANADIRGenero = new javax.swing.JButton();
+        ANADIRNombrePelicula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +102,8 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             }
         });
 
+        ANADIRNombrePelicula.setText("Añadir Nombre Pelicula");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,24 +111,27 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(MENUButton))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ANADIRPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ANADIRDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ANADIRProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ANADIRPais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ANADIRGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(MENUButton)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                            .addComponent(ANADIRGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANADIRNombrePelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(ANADIRPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(ANADIRNombrePelicula)
+                .addGap(15, 15, 15)
                 .addComponent(ANADIRDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ANADIRProductor)
@@ -128,7 +139,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
                 .addComponent(ANADIRPais)
                 .addGap(18, 18, 18)
                 .addComponent(ANADIRGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addComponent(MENUButton)
                 .addContainerGap())
         );
@@ -156,7 +167,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ANADIRGeneroActionPerformed
 
-        public class Menu implements ActionListener {
+    public class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -166,8 +177,20 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
 
     }
-        
-        public class Productor implements ActionListener{
+
+    public class Nombre_Pelicula implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e6) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Nombre Pelicula";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        }
+    }
+
+    public class Productor implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -176,20 +199,20 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             obj.AnadirVariado(opcion);
             obj.setVisible(true);
             dispose();
-        } 
-}
-        
-        public class Pelicula implements ActionListener{
+        }
+    }
+
+    public class Pelicula implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
             AnadirPelicula obj = new AnadirPelicula();
             obj.setVisible(true);
             dispose();
-        } 
-}
-        
-        public class Director implements ActionListener{
+        }
+    }
+
+    public class Director implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
@@ -198,10 +221,10 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             obj.AnadirVariado(opcion);
             obj.setVisible(true);
             dispose();
-        } 
-}
-                
-        public class Pais implements ActionListener{
+        }
+    }
+
+    public class Pais implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e5) {
@@ -210,15 +233,26 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
             obj.AnadirVariado(opcion);
             obj.setVisible(true);
             dispose();
-        } 
-}
+        }
+    }
     
-    
+        public class Genero implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e7) {
+            AnadirVariado obj = new AnadirVariado();
+            opcion = "Genero";
+            obj.AnadirVariado(opcion);
+            obj.setVisible(true);
+            dispose();
+        }
+    }
 
     private String opcion;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ANADIRDirector;
     private javax.swing.JButton ANADIRGenero;
+    private javax.swing.JButton ANADIRNombrePelicula;
     private javax.swing.JButton ANADIRPais;
     private javax.swing.JButton ANADIRPelicula;
     private javax.swing.JButton ANADIRProductor;

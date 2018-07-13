@@ -35,6 +35,7 @@ public class MenuEditar extends javax.swing.JFrame {
         OKSub e6 = new OKSub();
         EditarListaSub e7 = new EditarListaSub();
         MENUButton e8 = new MENUButton();
+        EditarPeliculaSub e9 = new EditarPeliculaSub();
         EditarNombrePelicula.addActionListener(e1);
         EditarGenero.addActionListener(e2);
         EditarDirector.addActionListener(e3);
@@ -43,6 +44,7 @@ public class MenuEditar extends javax.swing.JFrame {
         Lista.addListSelectionListener(e7);
         okButton.addActionListener(e6);
         menuButton.addActionListener(e8);
+        EditarPelicula.addActionListener(e9);
     }
 
     /**
@@ -63,6 +65,7 @@ public class MenuEditar extends javax.swing.JFrame {
         EditarGenero = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
+        EditarPelicula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,23 +97,18 @@ public class MenuEditar extends javax.swing.JFrame {
             }
         });
 
+        EditarPelicula.setText("Pelicula");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(EditarNombrePelicula)
-                        .addGap(59, 59, 59)
-                        .addComponent(EditarGenero))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(ListaElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(ListaElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(EditarDirector))
@@ -118,7 +116,11 @@ public class MenuEditar extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(menuButton)
-                            .addComponent(EditarProductor))))
+                            .addComponent(EditarProductor)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(EditarNombrePelicula)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EditarGenero)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -126,7 +128,10 @@ public class MenuEditar extends javax.swing.JFrame {
                         .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(okButton)
-                        .addGap(33, 33, 33))))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(EditarPelicula)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +144,8 @@ public class MenuEditar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditarNombrePelicula)
-                    .addComponent(EditarGenero))
+                    .addComponent(EditarGenero)
+                    .addComponent(EditarPelicula))
                 .addGap(18, 18, 18)
                 .addComponent(ListaElementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -187,7 +193,7 @@ public class MenuEditar extends javax.swing.JFrame {
             } catch (InvalidFormatException ex) {
                 Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if ((variable.equalsIgnoreCase("Nombre Pelicula"))&& (PerteneceNombreAHoja)) {
+            if ((variable.equalsIgnoreCase("Pelicula")) && (PerteneceNombreAHoja)) {
                 EditarPelicula obj = new EditarPelicula(decision);
                 obj.setVisible(true);
                 dispose();
@@ -233,6 +239,22 @@ public class MenuEditar extends javax.swing.JFrame {
 
             variable = "Nombre Pelicula";
             rellenar();
+            
+            /*MenuAnadirFrame obj = new MenuAnadirFrame();
+            obj.setVisible(true);
+            dispose();*/
+        }
+
+    }
+    
+        public class EditarPeliculaSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e9) {
+
+            variable = "Nombre Pelicula";
+            rellenar();
+            variable = "Pelicula";
             /*MenuAnadirFrame obj = new MenuAnadirFrame();
             obj.setVisible(true);
             dispose();*/
@@ -298,6 +320,7 @@ public class MenuEditar extends javax.swing.JFrame {
     private javax.swing.JButton EditarGenero;
     private javax.swing.JButton EditarNombrePelicula;
     private javax.swing.JButton EditarPais;
+    private javax.swing.JButton EditarPelicula;
     private javax.swing.JButton EditarProductor;
     private javax.swing.JList Lista;
     private javax.swing.JScrollPane ListaElementos;

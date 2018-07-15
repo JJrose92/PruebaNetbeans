@@ -5,10 +5,15 @@
  */
 package jpanels;
 
+import excel.ProgramasExcel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
  *
@@ -41,9 +46,25 @@ public class OptimizarCodigo {
         notajLabel.setText("Nota:");
 
     }
-	
 
-	
+    public boolean OptimizarIF(ProgramasExcel programasExcel, ArrayList arrayList) throws IOException, InvalidFormatException {
+        boolean name = !programasExcel.PerteneceNombreAHoja("Nombre Pelicula", arrayList.get(0).toString());
+        if (!programasExcel.PerteneceNombreAHoja("Nombre Pelicula", arrayList.get(0).toString())) {
+            programasExcel.comprobarColumna("Nombre Pelicula", arrayList.get(0).toString());
+            if (!programasExcel.PerteneceNombreAHoja("Genero", arrayList.get(1).toString())) {
+                programasExcel.comprobarColumna("Genero", arrayList.get(1).toString());
+            }
+            if (!programasExcel.PerteneceNombreAHoja("Director", arrayList.get(2).toString())) {
+                programasExcel.comprobarColumna("Director", arrayList.get(2).toString());
+            }
+            if (!programasExcel.PerteneceNombreAHoja("Pais", arrayList.get(3).toString())) {
+                programasExcel.comprobarColumna("Pais", arrayList.get(3).toString());
+            }
+            if (!programasExcel.PerteneceNombreAHoja("Productor", arrayList.get(4).toString())) {
+                programasExcel.comprobarColumna("Productor", arrayList.get(4).toString());
+            }
+        }
+        return name;
 
-    
+    }
 }

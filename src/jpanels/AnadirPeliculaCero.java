@@ -189,20 +189,8 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
             AnadirPeliculaCero obj = new AnadirPeliculaCero();
             ProgramasExcel programasExcel = new ProgramasExcel();
             try {
-                if (!programasExcel.PerteneceNombreAHoja("Nombre Pelicula", arrayList.get(0).toString())) {
-                    programasExcel.comprobarColumna("Nombre Pelicula", arrayList.get(0).toString());
-                    if (!programasExcel.PerteneceNombreAHoja("Genero", arrayList.get(1).toString())) {
-                        programasExcel.comprobarColumna("Genero", arrayList.get(1).toString());
-                    }
-                    if (!programasExcel.PerteneceNombreAHoja("Director", arrayList.get(2).toString())) {
-                        programasExcel.comprobarColumna("Director", arrayList.get(2).toString());
-                    }
-                    if (!programasExcel.PerteneceNombreAHoja("Pais", arrayList.get(3).toString())) {
-                        programasExcel.comprobarColumna("Pais", arrayList.get(3).toString());
-                    }
-                    if (!programasExcel.PerteneceNombreAHoja("Productor", arrayList.get(4).toString())) {
-                        programasExcel.comprobarColumna("Productor", arrayList.get(4).toString());
-                    }
+                OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+                if (optimizarCodigo.OptimizarIF(programasExcel, arrayList)) {
                     programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
                 } else {
                     obj.setVisible(false);

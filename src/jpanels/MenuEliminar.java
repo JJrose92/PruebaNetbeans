@@ -31,8 +31,9 @@ public class MenuEliminar extends JFrame {
     /**
      * Creates new form MenuEditar
      */
-    public MenuEliminar() {
+    public MenuEliminar(Boolean opcion) {
         initComponents();
+        opc = opcion;
         EditarNombrePeliculaSub e1 = new EditarNombrePeliculaSub();
         EditarGeneroSub e2 = new EditarGeneroSub();
         EditarDirectorSub e3 = new EditarDirectorSub();
@@ -60,15 +61,6 @@ public class MenuEliminar extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ListaElementos = new JScrollPane();
-        Lista = new JList();
-        EditarProductor = new JButton();
-        EditarDirector = new JButton();
-        EditarPais = new JButton();
-        EditarNombrePelicula = new JButton();
-        EditarGenero = new JButton();
-        okButton = new JButton();
-        menuButton = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,20 +177,42 @@ public class MenuEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
-            ProgramasExcel pex = new ProgramasExcel();
-            try {
-                pex.peliculaExistente(variable, decision);
-                pex.removerFila(variable, decision);
-            } catch (IOException ex) {
-                Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            MenuEliminar obj = new MenuEliminar();
-            obj.setVisible(true);
-            dispose();
-        }
+            if (opc) {
+                ProgramasExcel pex = new ProgramasExcel();
+                try {
+                    pex.peliculaExistente(variable, decision);
+                    pex.removerFila(variable, decision);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidFormatException ex) {
+                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                MenuEliminar obj = new MenuEliminar(true);
+                obj.setVisible(true);
+                dispose();
+            } else {
+                ProgramasExcel pex = new ProgramasExcel();
+                boolean PerteneceNombreAHoja = false;
+                try {
+                    PerteneceNombreAHoja = pex.PerteneceNombreAHoja(VAR_PELICULA, decision);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidFormatException ex) {
+                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
+                if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
+                    EditarPelicula obj = new EditarPelicula(decision);
+                    obj.setVisible(true);
+                    dispose();
+                } else {
+                    EditarVariado obj = new EditarVariado(variable, decision);
+                    obj.setVisible(true);
+                    dispose();
+                }
+            }
+
+        }
     }
 
     private void rellenar() {
@@ -272,7 +286,7 @@ public class MenuEliminar extends JFrame {
 
         }
     }
-    
+    private boolean opc;
     private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
     private static final String VAR_PELICULA = "Pelicula";
     private static final String VAR_GENERO = "Genero";
@@ -282,14 +296,14 @@ public class MenuEliminar extends JFrame {
     private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton EditarDirector;
-    private JButton EditarGenero;
-    private JButton EditarNombrePelicula;
-    private JButton EditarPais;
-    private JButton EditarProductor;
-    private JList Lista;
-    private JScrollPane ListaElementos;
-    private JButton menuButton;
-    private JButton okButton;
+    private JButton EditarDirector = new JButton();
+    private JButton EditarGenero= new JButton();
+    private JButton EditarNombrePelicula= new JButton();
+    private JButton EditarPais= new JButton();
+    private JButton EditarProductor= new JButton();
+    private JList Lista = new JList();
+    private JScrollPane ListaElementos= new JScrollPane(); 
+    private JButton menuButton= new JButton();
+    private JButton okButton= new JButton();
     // End of variables declaration//GEN-END:variables
 }

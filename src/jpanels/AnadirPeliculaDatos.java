@@ -31,24 +31,24 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
     public AnadirPeliculaDatos() {
 
         initComponents();
-		        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
-        optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);		
-        optimizarCodigo.OptimizarJLabel(notajLabel,jLabel1,jLabel2,jLabel3,jLabel4,jLabel5,jLabel6);
+        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+        optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);
+        optimizarCodigo.OptimizarJLabel(notajLabel, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6);
         Menu e1 = new Menu();
         Volver e2 = new Volver();
+        
         Ok e3 = new Ok();
-
         int i = 1888;
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int resta = year - i;
-        String[] years = new String[resta+1];
-        int k =0;
-        for(int a = 1888;a<=year;a++){
-            years[k]=Integer.toString(a);
+        String[] years = new String[resta + 1];
+        int k = 0;
+        for (int a = 1888; a <= year; a++) {
+            years[k] = Integer.toString(a);
             k++;
         }
         jListYears.setListData(years);
-        String[] notas = {"1", "2", "3","4","5","6","7","8","9","10"};
+        String[] notas = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         jListNotas.setListData(notas);
         iniciarJList();
         MENUButton.addActionListener(e1);
@@ -192,24 +192,29 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
             ArrayList nombresHojas = programasExcel.nombresHojas();
             Iterator iterator = nombresHojas.iterator();
             int i = 1;
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 String toString = iterator.next().toString();
                 String[] devolverNombres = programasExcel.devolverNombres(toString);
                 switch (i) {
-            case 1:  jListNombrePeliculas.setListData(devolverNombres);
-                     break;
-            case 2:  jListGeneros.setListData(devolverNombres);
-                     break;
-            case 3:  jListDirectores.setListData(devolverNombres);
-                     break;
-            case 4:  jListPaises.setListData(devolverNombres);
-                     break;
-            default: jListProductores.setListData(devolverNombres);
-                     break;
-        }
+                    case 1:
+                        jListNombrePeliculas.setListData(devolverNombres);
+                        break;
+                    case 2:
+                        jListGeneros.setListData(devolverNombres);
+                        break;
+                    case 3:
+                        jListDirectores.setListData(devolverNombres);
+                        break;
+                    case 4:
+                        jListPaises.setListData(devolverNombres);
+                        break;
+                    default:
+                        jListProductores.setListData(devolverNombres);
+                        break;
+                }
                 i++;
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(AnadirPeliculaDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidFormatException ex) {
@@ -267,7 +272,6 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
             dispose();
         }
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

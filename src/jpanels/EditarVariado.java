@@ -115,7 +115,7 @@ public class EditarVariado extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
-            MenuEditar obj = new MenuEditar();
+            MenuEliminar obj = new MenuEliminar(false);
             obj.setVisible(true);
             dispose();
         }
@@ -134,7 +134,7 @@ public class EditarVariado extends javax.swing.JFrame {
             } catch (InvalidFormatException ex) {
                 Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
             }
-            MenuEditar obj = new MenuEditar();
+            MenuEliminar obj = new MenuEliminar(false);
             obj.setVisible(true);
             dispose();
         }

@@ -95,17 +95,17 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //GEN-FIRST:event_ANADIRButtonActionPerformed
+//GEN-FIRST:event_ANADIRButtonActionPerformed
         // TODO add your handling code here:
-    //GEN-LAST:event_ANADIRButtonActionPerformed
+//GEN-LAST:event_ANADIRButtonActionPerformed
 
-    //GEN-FIRST:event_EDITARButtonActionPerformed
+//GEN-FIRST:event_EDITARButtonActionPerformed
         // TODO add your handling code here:
-    //GEN-LAST:event_EDITARButtonActionPerformed
+//GEN-LAST:event_EDITARButtonActionPerformed
 
-    //GEN-FIRST:event_ELIMINARButtonActionPerformed
+//GEN-FIRST:event_ELIMINARButtonActionPerformed
         // TODO add your handling code here:
-    //GEN-LAST:event_ELIMINARButtonActionPerformed
+//GEN-LAST:event_ELIMINARButtonActionPerformed
 
     public class Anadir implements ActionListener {
 
@@ -122,7 +122,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
-            MenuEditar obj = new MenuEditar();
+            MenuEliminar obj = new MenuEliminar(false);
             obj.setVisible(true);
             dispose();
         }
@@ -133,7 +133,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            MenuEliminar obj = new MenuEliminar();
+            MenuEliminar obj = new MenuEliminar(true);
             obj.setVisible(true);
             dispose();
         }

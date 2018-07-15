@@ -220,7 +220,7 @@ public class EditarPelicula extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
-            MenuEditar obj = new MenuEditar();
+            MenuEliminar obj = new MenuEliminar(false);
             obj.setVisible(true);
             dispose();
         }
@@ -240,7 +240,7 @@ public class EditarPelicula extends javax.swing.JFrame {
             arrayList.add(jTextFieldAno.getText());
             arrayList.add(jTextnota.getText());
 
-            MenuEditar obj = new MenuEditar();
+            MenuEliminar obj = new MenuEliminar(false);
             ProgramasExcel programasExcel = new ProgramasExcel();
             try {
                 if (!programasExcel.PerteneceNombreAHoja("Nombre Pelicula", arrayList.get(0).toString())) {

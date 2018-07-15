@@ -14,6 +14,9 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
@@ -26,10 +29,15 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
      * Creates new form MenuFrame
      */
     public AnadirPeliculaDatos() {
+
         initComponents();
+		        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+        optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);		
+        optimizarCodigo.OptimizarJLabel(notajLabel,jLabel1,jLabel2,jLabel3,jLabel4,jLabel5,jLabel6);
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Ok e3 = new Ok();
+
         int i = 1888;
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int resta = year - i;
@@ -58,53 +66,10 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MENUButton = new javax.swing.JButton();
-        VOLVERButton = new javax.swing.JButton();
-        OKButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        notajLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListNombrePeliculas = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListPaises = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jListDirectores = new javax.swing.JList<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jListYears = new javax.swing.JList<>();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jListProductores = new javax.swing.JList<>();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jListGeneros = new javax.swing.JList<>();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jListNotas = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        MENUButton.setText("MENU");
 
-        VOLVERButton.setText("VOLVER");
-
-        OKButton.setText("OK");
-
-        jLabel1.setText("Nombre Pelicula: ");
-
-        jLabel2.setText("Director:");
-        jLabel2.setToolTipText("");
-
-        jLabel3.setText("Productor:");
-
-        jLabel4.setText("Pais:");
-
-        jLabel5.setText("Año:");
-
-        jLabel6.setText("Genero: ");
-
-        notajLabel.setText("Nota:");
 
         jListNombrePeliculas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jListNombrePeliculas);
@@ -306,29 +271,29 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MENUButton;
-    private javax.swing.JButton OKButton;
-    private javax.swing.JButton VOLVERButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jListDirectores;
-    private javax.swing.JList<String> jListGeneros;
-    private javax.swing.JList<String> jListNombrePeliculas;
-    private javax.swing.JList<String> jListNotas;
-    private javax.swing.JList<String> jListPaises;
-    private javax.swing.JList<String> jListProductores;
-    private javax.swing.JList<String> jListYears;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JLabel notajLabel;
+    private JButton MENUButton = new JButton();
+    private JButton OKButton= new JButton();
+    private JButton VOLVERButton= new JButton();
+    private JLabel jLabel1 = new JLabel();
+    private JLabel jLabel2= new JLabel();
+    private JLabel jLabel3= new JLabel();
+    private JLabel jLabel4= new JLabel();
+    private JLabel jLabel5= new JLabel();
+    private JLabel jLabel6= new JLabel();
+    private javax.swing.JList<String> jListDirectores = new javax.swing.JList<>();
+    private javax.swing.JList<String> jListGeneros= new javax.swing.JList<>();
+    private javax.swing.JList<String> jListNombrePeliculas= new javax.swing.JList<>();
+    private javax.swing.JList<String> jListNotas= new javax.swing.JList<>();
+    private javax.swing.JList<String> jListPaises= new javax.swing.JList<>();
+    private javax.swing.JList<String> jListProductores= new javax.swing.JList<>();
+    private javax.swing.JList<String> jListYears= new javax.swing.JList<>();
+    private JScrollPane jScrollPane1 = new JScrollPane();
+    private JScrollPane jScrollPane2= new JScrollPane();
+    private JScrollPane jScrollPane3= new JScrollPane();
+    private JScrollPane jScrollPane4= new JScrollPane();
+    private JScrollPane jScrollPane5= new JScrollPane();
+    private JScrollPane jScrollPane6= new JScrollPane();
+    private JScrollPane jScrollPane7= new JScrollPane();
+    private JLabel notajLabel = new JLabel();
     // End of variables declaration//GEN-END:variables
 }

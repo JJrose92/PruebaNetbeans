@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
@@ -28,6 +31,9 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Ok e3 = new Ok();
+        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+        optimizarCodigo.OptimizarJLabel(notajLabel, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6);
+        optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);
         MENUButton.addActionListener(e1);
         VOLVERButton.addActionListener(e2);
         OKButton.addActionListener(e3);
@@ -43,46 +49,13 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MENUButton = new javax.swing.JButton();
-        VOLVERButton = new javax.swing.JButton();
-        OKButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        NombrePelijTextField = new javax.swing.JTextField();
-        DirectorjTextField = new javax.swing.JTextField();
-        ProductorjTextField = new javax.swing.JTextField();
-        PaisjTextField = new javax.swing.JTextField();
-        AnojTextField = new javax.swing.JTextField();
-        GenerojTextField = new javax.swing.JTextField();
-        notajLabel = new javax.swing.JLabel();
-        notaJText = new javax.swing.JTextField();
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        MENUButton.setText("MENU");
 
-        VOLVERButton.setText("VOLVER");
 
-        OKButton.setText("OK");
-
-        jLabel1.setText("Nombre Pelicula: ");
-
-        jLabel2.setText("Director:");
-        jLabel2.setToolTipText("");
-
-        jLabel3.setText("Productor:");
-
-        jLabel4.setText("Pais:");
-
-        jLabel5.setText("Año:");
-
-        jLabel6.setText("Genero: ");
-
-        notajLabel.setText("Nota:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,7 +206,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                     programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
                 } else {
                     obj.setVisible(false);
-                    
+
                 }
             } catch (IOException ex) {
                 Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
@@ -248,22 +221,22 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AnojTextField;
-    private javax.swing.JTextField DirectorjTextField;
-    private javax.swing.JTextField GenerojTextField;
-    private javax.swing.JButton MENUButton;
-    private javax.swing.JTextField NombrePelijTextField;
-    private javax.swing.JButton OKButton;
-    private javax.swing.JTextField PaisjTextField;
-    private javax.swing.JTextField ProductorjTextField;
-    private javax.swing.JButton VOLVERButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField notaJText;
-    private javax.swing.JLabel notajLabel;
+    private JTextField AnojTextField = new JTextField();
+    private JTextField DirectorjTextField = new JTextField();
+    private JTextField GenerojTextField= new JTextField();
+    private JButton MENUButton= new JButton();
+    private JTextField NombrePelijTextField= new JTextField();
+    private JButton OKButton= new JButton();
+    private JTextField PaisjTextField= new JTextField();
+    private JTextField ProductorjTextField= new JTextField();
+    private JButton VOLVERButton = new JButton();
+    private JLabel jLabel1 = new JLabel();
+    private JLabel jLabel2= new JLabel();
+    private JLabel jLabel3= new JLabel();
+    private JLabel jLabel4= new JLabel();
+    private JLabel jLabel5= new JLabel();
+    private JLabel jLabel6= new JLabel();
+    private JTextField notaJText= new JTextField();
+    private JLabel notajLabel= new JLabel();
     // End of variables declaration//GEN-END:variables
 }

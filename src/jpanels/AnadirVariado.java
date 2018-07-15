@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
@@ -39,6 +40,8 @@ public class AnadirVariado extends javax.swing.JFrame {
         initComponents();
         setjLabelProductor(opcion);
         InicializarJDialog();
+        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+        optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);
         OKButton e1 = new OKButton();
         MENUButton e2 = new MENUButton();
         VOLVERButton e3 = new VOLVERButton();
@@ -60,10 +63,7 @@ public class AnadirVariado extends javax.swing.JFrame {
     private void initComponents() {
 
         PRODUCTORTextField = new javax.swing.JTextField();
-        jLabel = new javax.swing.JLabel();
-        MENUButton = new javax.swing.JButton();
-        VOLVERButton = new javax.swing.JButton();
-        OKButton = new JButton("");
+        jLabel = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,15 +72,8 @@ public class AnadirVariado extends javax.swing.JFrame {
 
         jLabel.setToolTipText("");
 
-        MENUButton.setText("MENU");
-        MENUButton.setToolTipText("");
 
-
-        VOLVERButton.setText("VOLVER");
-        VOLVERButton.setToolTipText("");
-
-        OKButton.setText("OK");
-
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,11 +115,11 @@ public class AnadirVariado extends javax.swing.JFrame {
 
 //GEN-FIRST:event_PRODUCTORTextFieldActionPerformed
         // TODO add your handling code here:
-    //GEN-LAST:event_PRODUCTORTextFieldActionPerformed
+//GEN-LAST:event_PRODUCTORTextFieldActionPerformed
 
 //GEN-FIRST:event_MENUButtonActionPerformed
         // TODO add your handling code here:
-    //GEN-LAST:event_MENUButtonActionPerformed
+//GEN-LAST:event_MENUButtonActionPerformed
 
     public void InicializarJDialog() {
         JLabel label = new JLabel(getjLabelProductor() + " añadido anteriormente");
@@ -189,10 +182,10 @@ public class AnadirVariado extends javax.swing.JFrame {
 
     private JDialog dialog = new JDialog();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MENUButton;
-    private javax.swing.JButton OKButton;
-    private javax.swing.JTextField PRODUCTORTextField;
-    private javax.swing.JButton VOLVERButton;
-    private javax.swing.JLabel jLabel;
+    public JButton MENUButton = new JButton();
+    public JButton OKButton= new JButton();
+    public JTextField PRODUCTORTextField = new JTextField();
+    public JButton VOLVERButton = new JButton();
+    private JLabel jLabel = new JLabel();
     // End of variables declaration//GEN-END:variables
 }

@@ -32,12 +32,12 @@ public class ProgramasExcel {
     private static final Logger LOGGER = Logger.getLogger("newexcel.ExcelOOXML");
     private Workbook workbook = new XSSFWorkbook();
     private String nombreArchivo = "reporte.xlsx";
-    private static final String nombre_pelicula = "Nombre Pelicula";
-    private static final String var_pelicula = "Pelicula";
-    private static final String var_genero = "Genero";
-    private static final String var_director = "Director";
-    private static final String var_pais = "Pais";
-    private static final String var_productor = "Productor";
+    private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
+    private static final String VAR_PELICULA = "Pelicula";
+    private static final String VAR_GENERO = "Genero";
+    private static final String VAR_DIRECTOR = "Director";
+    private static final String VAR_PAIS = "Pais";
+    private static final String VAR_PRODUCTOR = "Productor";
 
     public void comprobarExcel() throws IOException {
         File archivo = new File(nombreArchivo);
@@ -79,8 +79,8 @@ public class ProgramasExcel {
         boolean celda = false;
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
-        if (!esColumnaVacia(var_pelicula)) {
-            Sheet sheet = workbook.getSheet(var_pelicula);
+        if (!esColumnaVacia(VAR_PELICULA)) {
+            Sheet sheet = workbook.getSheet(VAR_PELICULA);
             Iterator<Row> iterator = sheet.iterator();
             int numcelda = 0;
             int fila = 0;
@@ -125,7 +125,7 @@ public class ProgramasExcel {
     }
 
     public void removerFilaNombrePelicula(String palabra) throws IOException, InvalidFormatException {
-        Sheet sheet = workbook.getSheet(nombre_pelicula);
+        Sheet sheet = workbook.getSheet(VAR_NOMBRE_PELICULA);
         Row actualRow;
         int i = 0;
         boolean borrado = false;
@@ -172,7 +172,7 @@ public class ProgramasExcel {
     public void EditarPelicula(ArrayList lista, String pelicula) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
-        Sheet sheet = workbook.getSheet(var_pelicula);
+        Sheet sheet = workbook.getSheet(VAR_PELICULA);
         boolean encontrado = false;
         int i = 0;
         Iterator<Row> rowIterator = sheet.rowIterator();
@@ -189,7 +189,7 @@ public class ProgramasExcel {
                 }
             }
         }
-        sheet = workbook.getSheet(nombre_pelicula);
+        sheet = workbook.getSheet(VAR_NOMBRE_PELICULA);
         encontrado = false;
         rowIterator = sheet.rowIterator();
         while (!encontrado && rowIterator.hasNext()) {
@@ -209,7 +209,7 @@ public class ProgramasExcel {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         ArrayList arrayList = new ArrayList();
-        Sheet sheet = workbook.getSheet(var_pelicula);
+        Sheet sheet = workbook.getSheet(VAR_PELICULA);
         Iterator<Row> iterator = sheet.iterator();
         boolean encontrado = false;
         while (!encontrado && iterator.hasNext()) {
@@ -235,7 +235,7 @@ public class ProgramasExcel {
         while (sheetIterator.hasNext()) {
             arrayList.add(sheetIterator.next().getSheetName());
         }
-        arrayList.remove(var_pelicula);
+        arrayList.remove(VAR_PELICULA);
         return arrayList;
     }
 
@@ -291,9 +291,9 @@ public class ProgramasExcel {
                 next.getCell(0).setCellValue(nuevaPalabra);
             }
         }
-        sheet = workbook.getSheet(var_pelicula);
+        sheet = workbook.getSheet(VAR_PELICULA);
         
-        if (!esColumnaVacia(var_pelicula)) {
+        if (!esColumnaVacia(VAR_PELICULA)) {
             encontrado = false;
             int i = 0;
             int k = 0;
@@ -345,15 +345,15 @@ public class ProgramasExcel {
         Row row = sheet.createRow(0);
         Row row1 = sheet.createRow(1);
         createCell = row.createCell(0);
-        createCell.setCellValue(nombre_pelicula);
+        createCell.setCellValue(VAR_NOMBRE_PELICULA);
         createCell = row.createCell(1);
-        createCell.setCellValue(var_genero);
+        createCell.setCellValue(VAR_GENERO);
         createCell = row.createCell(2);
-        createCell.setCellValue(var_director);
+        createCell.setCellValue(VAR_DIRECTOR);
         createCell = row.createCell(3);
-        createCell.setCellValue(var_pais);
+        createCell.setCellValue(VAR_PAIS);
         createCell = row.createCell(4);
-        createCell.setCellValue(var_productor);
+        createCell.setCellValue(VAR_PRODUCTOR);
         createCell = row.createCell(5);
         createCell.setCellValue("Año");
         createCell = row.createCell(6);
@@ -455,12 +455,12 @@ public class ProgramasExcel {
     public void crearExcel() throws FileNotFoundException, IOException {
 
         // Creamos el libro de trabajo de Excel formato OOXML
-        workbook.createSheet(nombre_pelicula);
-        workbook.createSheet(var_genero);
-        workbook.createSheet(var_director);
-        workbook.createSheet(var_pais);
-        workbook.createSheet(var_productor);
-        workbook.createSheet(var_pelicula);
+        workbook.createSheet(VAR_NOMBRE_PELICULA);
+        workbook.createSheet(VAR_GENERO);
+        workbook.createSheet(VAR_DIRECTOR);
+        workbook.createSheet(VAR_PAIS);
+        workbook.createSheet(VAR_PRODUCTOR);
+        workbook.createSheet(VAR_PELICULA);
 
         // La hoja donde pondremos los datos
         try {

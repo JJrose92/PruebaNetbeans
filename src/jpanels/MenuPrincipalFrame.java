@@ -56,29 +56,17 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         ANADIRButton.setText("Añadir");
         ANADIRButton.setToolTipText("");
         ANADIRButton.setActionCommand("botonAnadir");
-        ANADIRButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRButtonActionPerformed(evt);
-            }
-        });
+
 
         EDITARButton.setText("Editar");
         EDITARButton.setToolTipText("");
         EDITARButton.setActionCommand("botonEditar");
-        EDITARButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EDITARButtonActionPerformed(evt);
-            }
-        });
+
 
         ELIMINARButton.setText("Eliminar");
         ELIMINARButton.setToolTipText("");
         ELIMINARButton.setActionCommand("botonEliminar");
-        ELIMINARButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ELIMINARButtonActionPerformed(evt);
-            }
-        });
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,17 +95,17 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ANADIRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRButtonActionPerformed
+    //GEN-FIRST:event_ANADIRButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRButtonActionPerformed
+    //GEN-LAST:event_ANADIRButtonActionPerformed
 
-    private void EDITARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDITARButtonActionPerformed
+    //GEN-FIRST:event_EDITARButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EDITARButtonActionPerformed
+    //GEN-LAST:event_EDITARButtonActionPerformed
 
-    private void ELIMINARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ELIMINARButtonActionPerformed
+    //GEN-FIRST:event_ELIMINARButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ELIMINARButtonActionPerformed
+    //GEN-LAST:event_ELIMINARButtonActionPerformed
 
     public class Anadir implements ActionListener {
 

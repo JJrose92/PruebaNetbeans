@@ -260,7 +260,7 @@ public class EditarPelicula extends javax.swing.JFrame {
                     programasExcel.EditarPelicula(arrayList, peliculaAntigua);
                 } else {
                     obj.setVisible(false);
-                    //dialog.setVisible(true);
+                    
                 }
             } catch (IOException ex) {
                 Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);

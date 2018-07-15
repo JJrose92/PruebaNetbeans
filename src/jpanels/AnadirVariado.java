@@ -68,21 +68,13 @@ public class AnadirVariado extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PRODUCTORTextField.setToolTipText("");
-        PRODUCTORTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PRODUCTORTextFieldActionPerformed(evt);
-            }
-        });
+
 
         jLabel.setToolTipText("");
 
         MENUButton.setText("MENU");
         MENUButton.setToolTipText("");
-        MENUButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MENUButtonActionPerformed(evt);
-            }
-        });
+
 
         VOLVERButton.setText("VOLVER");
         VOLVERButton.setToolTipText("");
@@ -128,13 +120,13 @@ public class AnadirVariado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PRODUCTORTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRODUCTORTextFieldActionPerformed
+//GEN-FIRST:event_PRODUCTORTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PRODUCTORTextFieldActionPerformed
+    //GEN-LAST:event_PRODUCTORTextFieldActionPerformed
 
-    private void MENUButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MENUButtonActionPerformed
+//GEN-FIRST:event_MENUButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MENUButtonActionPerformed
+    //GEN-LAST:event_MENUButtonActionPerformed
 
     public void InicializarJDialog() {
         JLabel label = new JLabel(getjLabelProductor() + " añadido anteriormente");

@@ -83,7 +83,7 @@ public class MenuEliminar extends JFrame {
 
         EditarPais.setText("Paises");
 
-        EditarNombrePelicula.setText("Nombre Pelicula");
+        EditarNombrePelicula.setText(VAR_NOMBRE_PELICULA);
 
         EditarGenero.setText("Géneros");
 
@@ -221,12 +221,9 @@ public class MenuEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e1) {
 
-            variable = nombre_pelicula;
-            celda = 0;
+            variable = VAR_NOMBRE_PELICULA;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -236,12 +233,9 @@ public class MenuEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e2) {
 
-            variable = var_genero;
-            celda = 1;
+            variable = VAR_GENERO;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -250,12 +244,9 @@ public class MenuEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            variable = var_director;
-            celda = 2;
+            variable = VAR_DIRECTOR;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -264,12 +255,9 @@ public class MenuEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
-            variable = var_pais;
-            celda = 3;
+            variable = VAR_PAIS;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -279,19 +267,18 @@ public class MenuEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e5) {
 
-            variable = var_productor;
-            celda = 4;
+            variable = VAR_PRODUCTOR;
             rellenar();
 
         }
     }
-    private int celda = 0;
-    private static final String nombre_pelicula = "Nombre Pelicula";
-    private static final String var_pelicula = "Pelicula";
-    private static final String var_genero = "Genero";
-    private static final String var_director = "Director";
-    private static final String var_pais = "Pais";
-    private static final String var_productor = "Productor";
+    
+    private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
+    private static final String VAR_PELICULA = "Pelicula";
+    private static final String VAR_GENERO = "Genero";
+    private static final String VAR_DIRECTOR = "Director";
+    private static final String VAR_PAIS = "Pais";
+    private static final String VAR_PRODUCTOR = "Productor";
     private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables

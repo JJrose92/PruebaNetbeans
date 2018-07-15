@@ -233,7 +233,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                     programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
                 } else {
                     obj.setVisible(false);
-                    //dialog.setVisible(true);
+                    
                 }
             } catch (IOException ex) {
                 Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);

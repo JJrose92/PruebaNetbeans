@@ -58,49 +58,29 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         ANADIRPelicula.setText("Añadir Pelicula");
         ANADIRPelicula.setToolTipText("");
         ANADIRPelicula.setActionCommand("botonAnadirPelicula");
-        ANADIRPelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRPeliculaActionPerformed(evt);
-            }
-        });
+
 
         ANADIRDirector.setText("Añadir Director");
         ANADIRDirector.setToolTipText("");
         ANADIRDirector.setActionCommand("botonAnadirDirector");
-        ANADIRDirector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRDirectorActionPerformed(evt);
-            }
-        });
+
 
         ANADIRProductor.setText("Añadir Productor");
         ANADIRProductor.setToolTipText("");
         ANADIRProductor.setActionCommand("botonAnadirProductor");
-        ANADIRProductor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRProductorActionPerformed(evt);
-            }
-        });
+ 
 
         ANADIRPais.setText("Añadir Pais");
         ANADIRPais.setToolTipText("");
         ANADIRPais.setActionCommand("botonAnadirProductor");
-        ANADIRPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRPaisActionPerformed(evt);
-            }
-        });
+
 
         MENUButton.setText("MENU");
 
         ANADIRGenero.setText("Añadir Género");
         ANADIRGenero.setToolTipText("");
         ANADIRGenero.setActionCommand("botonAnadirPelicula");
-        ANADIRGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANADIRGeneroActionPerformed(evt);
-            }
-        });
+
 
         ANADIRNombrePelicula.setText("Añadir Nombre Pelicula");
 
@@ -147,25 +127,25 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ANADIRPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRPeliculaActionPerformed
+   //GEN-FIRST:event_ANADIRPeliculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRPeliculaActionPerformed
+    //GEN-LAST:event_ANADIRPeliculaActionPerformed
 
-    private void ANADIRDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRDirectorActionPerformed
+    //GEN-FIRST:event_ANADIRDirectorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRDirectorActionPerformed
+    //GEN-LAST:event_ANADIRDirectorActionPerformed
 
-    private void ANADIRProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRProductorActionPerformed
+    //GEN-FIRST:event_ANADIRProductorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRProductorActionPerformed
+    //GEN-LAST:event_ANADIRProductorActionPerformed
 
-    private void ANADIRPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRPaisActionPerformed
+    //GEN-FIRST:event_ANADIRPaisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRPaisActionPerformed
+    //GEN-LAST:event_ANADIRPaisActionPerformed
 
-    private void ANADIRGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANADIRGeneroActionPerformed
+    //GEN-FIRST:event_ANADIRGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANADIRGeneroActionPerformed
+   //GEN-LAST:event_ANADIRGeneroActionPerformed
 
     public class Menu implements ActionListener {
 

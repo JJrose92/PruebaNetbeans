@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -56,16 +58,16 @@ public class MenuEditar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ListaElementos = new javax.swing.JScrollPane();
-        Lista = new javax.swing.JList();
-        EditarProductor = new javax.swing.JButton();
-        EditarDirector = new javax.swing.JButton();
-        EditarPais = new javax.swing.JButton();
-        EditarNombrePelicula = new javax.swing.JButton();
-        EditarGenero = new javax.swing.JButton();
-        okButton = new javax.swing.JButton();
-        menuButton = new javax.swing.JButton();
-        EditarPelicula = new javax.swing.JButton();
+        ListaElementos = new JScrollPane();
+        Lista = new JList();
+        EditarProductor = new JButton();
+        EditarDirector = new JButton();
+        EditarPais = new JButton();
+        EditarNombrePelicula = new JButton();
+        EditarGenero = new JButton();
+        okButton = new JButton();
+        menuButton = new JButton();
+        EditarPelicula = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,28 +78,20 @@ public class MenuEditar extends javax.swing.JFrame {
         EditarProductor.setToolTipText("");
 
         EditarDirector.setText("Directores");
-        EditarDirector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarDirectorActionPerformed(evt);
-            }
-        });
+
 
         EditarPais.setText("Paises");
 
-        EditarNombrePelicula.setText("Nombre Pelicula");
+        EditarNombrePelicula.setText(VAR_NOMBRE_PELICULA);
 
         EditarGenero.setText("Géneros");
 
         okButton.setText("OK");
 
         menuButton.setText("MENU");
-        menuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuButtonActionPerformed(evt);
-            }
-        });
+ 
 
-        EditarPelicula.setText("Pelicula");
+        EditarPelicula.setText(VAR_PELICULA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,16 +152,13 @@ public class MenuEditar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EditarDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarDirectorActionPerformed
+//GEN-FIRST:event_EditarDirectorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EditarDirectorActionPerformed
+//GEN-LAST:event_EditarDirectorActionPerformed
 
-    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuButtonActionPerformed
-
-
-
+//GEN-LAST:event_menuButtonActionPerformed
 
     public class MENUButton implements ActionListener {
 
@@ -187,13 +178,13 @@ public class MenuEditar extends javax.swing.JFrame {
             ProgramasExcel pex = new ProgramasExcel();
             boolean PerteneceNombreAHoja = false;
             try {
-                PerteneceNombreAHoja = pex.PerteneceNombreAHoja("Pelicula", decision);
-                        } catch (IOException ex) {
+                PerteneceNombreAHoja = pex.PerteneceNombreAHoja(VAR_PELICULA, decision);
+            } catch (IOException ex) {
                 Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InvalidFormatException ex) {
                 Logger.getLogger(MenuEditar.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if ((variable.equalsIgnoreCase("Pelicula")) && (PerteneceNombreAHoja)) {
+            if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
                 EditarPelicula obj = new EditarPelicula(decision);
                 obj.setVisible(true);
                 dispose();
@@ -237,27 +228,22 @@ public class MenuEditar extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e1) {
 
-            variable = "Nombre Pelicula";
+            variable = VAR_NOMBRE_PELICULA;
             rellenar();
-            
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
-    
-        public class EditarPeliculaSub implements ActionListener {
+
+    public class EditarPeliculaSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e9) {
 
-            variable = "Nombre Pelicula";
+            variable = VAR_NOMBRE_PELICULA;
             rellenar();
-            variable = "Pelicula";
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+            variable = VAR_PELICULA;
+
         }
 
     }
@@ -267,11 +253,9 @@ public class MenuEditar extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e2) {
 
-            variable = "Genero";
+            variable = VAR_GENERO;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -280,11 +264,9 @@ public class MenuEditar extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            variable = "Director";
+            variable = VAR_DIRECTOR;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -293,11 +275,9 @@ public class MenuEditar extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
-            variable = "Pais";
+            variable = VAR_PAIS;
             rellenar();
-            /*MenuAnadirFrame obj = new MenuAnadirFrame();
-            obj.setVisible(true);
-            dispose();*/
+
         }
 
     }
@@ -307,24 +287,29 @@ public class MenuEditar extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e5) {
 
-            variable = "Productor";
+            variable = VAR_PRODUCTOR;
             rellenar();
 
         }
     }
-
+    private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
+    private static final String VAR_PELICULA = "Pelicula";
+    private static final String VAR_GENERO = "Genero";
+    private static final String VAR_DIRECTOR = "Director";
+    private static final String VAR_PAIS = "Pais";
+    private static final String VAR_PRODUCTOR = "Productor";
     private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton EditarDirector;
-    private javax.swing.JButton EditarGenero;
-    private javax.swing.JButton EditarNombrePelicula;
-    private javax.swing.JButton EditarPais;
-    private javax.swing.JButton EditarPelicula;
-    private javax.swing.JButton EditarProductor;
-    private javax.swing.JList Lista;
-    private javax.swing.JScrollPane ListaElementos;
-    private javax.swing.JButton menuButton;
-    private javax.swing.JButton okButton;
+    private JButton EditarDirector;
+    private JButton EditarGenero;
+    private JButton EditarNombrePelicula;
+    private JButton EditarPais;
+    private JButton EditarPelicula;
+    private JButton EditarProductor;
+    private JList Lista;
+    private JScrollPane ListaElementos;
+    private JButton menuButton;
+    private JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

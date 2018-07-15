@@ -2,5 +2,5 @@ projectKey=Unknown
 serverUrl=http://localhost:9000
 serverVersion=7.1.0.11001
 dashboardUrl=http://localhost:9000/dashboard/index/Unknown
-ceTaskId=AWSfDPaADcDRvTN8OjNW
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWSfDPaADcDRvTN8OjNW
+ceTaskId=AWSfGWZpDcDRvTN8OjNa
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWSfGWZpDcDRvTN8OjNa

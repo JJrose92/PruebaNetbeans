@@ -98,7 +98,7 @@ public class ProgramasExcel {
                 }
                 encontrado = next.getCell(numcelda).getStringCellValue().equalsIgnoreCase(decision);
                 if (encontrado) {
-                    removerFilaNombrePelicula(sheet.getRow(fila).getCell(0).getStringCellValue());
+                    removerFilaNombrePelicula(VAR_NOMBRE_PELICULA, sheet.getRow(fila).getCell(0).getStringCellValue());
                     removeRow(sheet, fila);
 
                 }
@@ -124,8 +124,8 @@ public class ProgramasExcel {
         }
     }
 
-    public void removerFilaNombrePelicula(String palabra) throws IOException, InvalidFormatException {
-        Sheet sheet = workbook.getSheet(VAR_NOMBRE_PELICULA);
+    public void removerFilaNombrePelicula(String hoja, String palabra) throws IOException, InvalidFormatException {
+        Sheet sheet = workbook.getSheet(hoja);
         Row actualRow;
         int i = 0;
         boolean borrado = false;
@@ -147,23 +147,7 @@ public class ProgramasExcel {
     public void removerFila(String hoja, String palabra) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
-        Sheet sheet = workbook.getSheet(hoja);
-        Row actualRow;
-        int i = 0;
-        boolean borrado = false;
-        while (i <= sheet.getLastRowNum() && !borrado) {
-            actualRow = sheet.getRow(i);
-            borrado = actualRow.getCell(0).toString().equalsIgnoreCase(palabra);
-            if (borrado) {
-                if (i == sheet.getLastRowNum()) {
-                    sheet.removeRow(actualRow);
-                } else {
-                    sheet.shiftRows(i + 1, sheet.getLastRowNum(), -1);
-                }
-                i--;
-            }
-            i++;
-        }
+        removerFilaNombrePelicula(hoja, palabra);
         FileOutputStream salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();

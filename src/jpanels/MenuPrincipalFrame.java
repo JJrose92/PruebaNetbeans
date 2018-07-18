@@ -47,65 +47,64 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ANADIRButton = new javax.swing.JButton();
-        EDITARButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         ELIMINARButton = new javax.swing.JButton();
+        EDITARButton = new javax.swing.JButton();
+        ANADIRButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ANADIRButton.setText("Añadir");
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        ELIMINARButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        ELIMINARButton.setText("ELIMINAR");
+
+        EDITARButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EDITARButton.setText("EDITAR");
+
+        ANADIRButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        ANADIRButton.setText("AÑADIR");
         ANADIRButton.setToolTipText("");
-        ANADIRButton.setActionCommand("botonAnadir");
 
-
-        EDITARButton.setText("Editar");
-        EDITARButton.setToolTipText("");
-        EDITARButton.setActionCommand("botonEditar");
-
-
-        ELIMINARButton.setText("Eliminar");
-        ELIMINARButton.setToolTipText("");
-        ELIMINARButton.setActionCommand("botonEliminar");
-
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ANADIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ELIMINARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EDITARButton, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                .addContainerGap(326, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(ANADIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(EDITARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ANADIRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EDITARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ELIMINARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(175, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(ANADIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(EDITARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ELIMINARButton)
-                .addContainerGap(161, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-//GEN-FIRST:event_ANADIRButtonActionPerformed
-        // TODO add your handling code here:
-//GEN-LAST:event_ANADIRButtonActionPerformed
-
-//GEN-FIRST:event_EDITARButtonActionPerformed
-        // TODO add your handling code here:
-//GEN-LAST:event_EDITARButtonActionPerformed
-
-//GEN-FIRST:event_ELIMINARButtonActionPerformed
-        // TODO add your handling code here:
-//GEN-LAST:event_ELIMINARButtonActionPerformed
 
     public class Anadir implements ActionListener {
 
@@ -149,5 +148,6 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JButton ANADIRButton;
     private javax.swing.JButton EDITARButton;
     private javax.swing.JButton ELIMINARButton;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

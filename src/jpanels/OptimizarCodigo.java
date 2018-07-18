@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
@@ -67,4 +68,7 @@ public class OptimizarCodigo {
         return name;
 
     }
+
+
+
 }

@@ -26,12 +26,18 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     /**
      * Creates new form MenuFrame
      */
-    public AnadirPeliculaCero() {
+    public AnadirPeliculaCero(String pelicula) {
+        opc = pelicula.equalsIgnoreCase("");
         initComponents();
+        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+        if (!opc) {
+            rellenar(pelicula);
+            peliculaAntigua = pelicula;
+        }
+
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Ok e3 = new Ok();
-        OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
         optimizarCodigo.OptimizarJLabel(notajLabel, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6);
         optimizarCodigo.OptimizarBotones(MENUButton, VOLVERButton, OKButton);
         MENUButton.addActionListener(e1);
@@ -49,103 +55,160 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
-
+        jPanel1 = new javax.swing.JPanel();
+        OKButton = new javax.swing.JButton();
+        PaisjTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        GenerojTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        ProductorjTextField = new javax.swing.JTextField();
+        AnojTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        DirectorjTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        notaJText = new javax.swing.JTextField();
+        notajLabel = new javax.swing.JLabel();
+        VOLVERButton = new javax.swing.JButton();
+        MENUButton = new javax.swing.JButton();
+        NombrePelijTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 450));
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 450));
 
+        OKButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        OKButton.setText("OK");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Pais:");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("Genero: ");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Productor:");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Año:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Director:");
+        jLabel2.setToolTipText("");
+
+        notajLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        notajLabel.setText("Nota:");
+
+        VOLVERButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        VOLVERButton.setText("VOLVER");
+
+        MENUButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        MENUButton.setText("MENU");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Nombre Pelicula: ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(notajLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AnojTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(GenerojTextField)
+                    .addComponent(PaisjTextField))
+                .addGap(65, 65, 65))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MENUButton)
+                .addGap(215, 215, 215)
+                .addComponent(VOLVERButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(OKButton)
+                .addGap(29, 29, 29))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(notajLabel)
+                            .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(VOLVERButton)
+                            .addComponent(MENUButton)
+                            .addComponent(OKButton))
+                        .addGap(47, 47, 47))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(MENUButton)
-                                .addGap(129, 129, 129)
-                                .addComponent(VOLVERButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(OKButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(234, 234, 234)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 30, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NombrePelijTextField)))
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(notajLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 96, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(notajLabel)
-                    .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MENUButton)
-                    .addComponent(VOLVERButton)
-                    .addComponent(OKButton))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -165,7 +228,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     public class Volver implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e1) {
+        public void actionPerformed(ActionEvent e2) {
             AnadirPelicula obj = new AnadirPelicula();
             obj.setVisible(true);
             dispose();
@@ -176,7 +239,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
     public class Ok implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e1) {
+        public void actionPerformed(ActionEvent e3) {
             ArrayList arrayList = new ArrayList();
             arrayList.add(NombrePelijTextField.getText());
             arrayList.add(GenerojTextField.getText());
@@ -186,45 +249,75 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
             arrayList.add(AnojTextField.getText());
             arrayList.add(notaJText.getText());
 
-            AnadirPeliculaCero obj = new AnadirPeliculaCero();
             ProgramasExcel programasExcel = new ProgramasExcel();
             try {
                 OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
                 if (optimizarCodigo.OptimizarIF(programasExcel, arrayList)) {
-                    programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
-                } else {
-                    obj.setVisible(false);
+                    if (opc) {
+                        programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
+                    } else {
+                        programasExcel.EditarPelicula(arrayList, peliculaAntigua);
+                    }
 
                 }
             } catch (IOException ex) {
-                Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InvalidFormatException ex) {
-                Logger.getLogger(AnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
             }
-            obj.setVisible(true);
-            dispose();
+            if (opc) {
+                AnadirPeliculaCero obj = new AnadirPeliculaCero("");
+                obj.setVisible(true);
+                dispose();
+            } else {
+                MenuEliminar obj = new MenuEliminar(false);
+                obj.setVisible(true);
+                dispose();
+            }
         }
 
     }
 
+    private void rellenar(String pelicula) {
+        try {
+            ProgramasExcel programasExcel = new ProgramasExcel();
+            ArrayList datosPelicula;
 
+            datosPelicula = programasExcel.datosPelicula(pelicula);
+            NombrePelijTextField.setText(datosPelicula.get(0).toString());
+            GenerojTextField.setText(datosPelicula.get(1).toString());
+            DirectorjTextField.setText(datosPelicula.get(2).toString());
+            PaisjTextField.setText(datosPelicula.get(3).toString());
+            ProductorjTextField.setText(datosPelicula.get(4).toString());
+            AnojTextField.setText(datosPelicula.get(5).toString());
+            notaJText.setText(datosPelicula.get(6).toString());
+        } catch (IOException ex) {
+            Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidFormatException ex) {
+            Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    private String peliculaAntigua;
+    private boolean opc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField AnojTextField = new JTextField();
-    private JTextField DirectorjTextField = new JTextField();
-    private JTextField GenerojTextField= new JTextField();
-    private JButton MENUButton= new JButton();
-    private JTextField NombrePelijTextField= new JTextField();
-    private JButton OKButton= new JButton();
-    private JTextField PaisjTextField= new JTextField();
-    private JTextField ProductorjTextField= new JTextField();
-    private JButton VOLVERButton = new JButton();
-    private JLabel jLabel1 = new JLabel();
-    private JLabel jLabel2= new JLabel();
-    private JLabel jLabel3= new JLabel();
-    private JLabel jLabel4= new JLabel();
-    private JLabel jLabel5= new JLabel();
-    private JLabel jLabel6= new JLabel();
-    private JTextField notaJText= new JTextField();
-    private JLabel notajLabel= new JLabel();
+    private javax.swing.JTextField AnojTextField;
+    private javax.swing.JTextField DirectorjTextField;
+    private javax.swing.JTextField GenerojTextField;
+    private javax.swing.JButton MENUButton;
+    private javax.swing.JTextField NombrePelijTextField;
+    private javax.swing.JButton OKButton;
+    private javax.swing.JTextField PaisjTextField;
+    private javax.swing.JTextField ProductorjTextField;
+    private javax.swing.JButton VOLVERButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField notaJText;
+    private javax.swing.JLabel notajLabel;
     // End of variables declaration//GEN-END:variables
 }

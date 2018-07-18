@@ -24,6 +24,7 @@ public class EditarVariado extends javax.swing.JFrame {
      */
     public EditarVariado(String hoja, String palabra) {
         initComponents();
+        opc = palabra.equalsIgnoreCase("");
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         OK e3 = new OK();
@@ -45,52 +46,72 @@ public class EditarVariado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelOpcion = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jTextFieldEditar = new javax.swing.JTextField();
+        jLabelOpcion = new javax.swing.JLabel();
         jButtonOK = new javax.swing.JButton();
-        jButtonMenu = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 450));
+        setResizable(false);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButtonOK.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButtonOK.setText("OK");
 
+        jButtonVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButtonVolver.setText("VOLVER");
+
+        jButtonMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButtonMenu.setText("MENU");
 
-        jButtonVolver.setText("VOLVER");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jButtonMenu)
+                .addGap(190, 190, 190)
+                .addComponent(jButtonVolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonOK)
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabelOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonMenu)
+                    .addComponent(jButtonOK))
+                .addGap(20, 20, 20))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabelOpcion)
-                .addGap(55, 55, 55)
-                .addComponent(jTextFieldEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonMenu)
-                .addGap(93, 93, 93)
-                .addComponent(jButtonVolver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonOK)
-                .addGap(21, 21, 21))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelOpcion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonOK)
-                    .addComponent(jButtonMenu)
-                    .addComponent(jButtonVolver))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -99,8 +120,7 @@ public class EditarVariado extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
-        public class Menu implements ActionListener {
+    public class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -121,35 +141,50 @@ public class EditarVariado extends javax.swing.JFrame {
         }
 
     }
-    
-        public class OK implements ActionListener {
+
+    public class OK implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            ProgramasExcel programasExcel = new ProgramasExcel();
-            try {
-                programasExcel.editarNombre(opcionHoja, opcionPalabra, jTextFieldEditar.getText());
-            } catch (IOException ex) {
-                Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            MenuEliminar obj = new MenuEliminar(false);
-            obj.setVisible(true);
-            dispose();
-        }
 
+            ProgramasExcel programasExcel = new ProgramasExcel();
+            if (opc) {
+                try {
+                    if (!programasExcel.PerteneceNombreAHoja(opcionHoja, jTextFieldEditar.getText())) {
+                        programasExcel.comprobarColumna(opcionHoja, jTextFieldEditar.getText());
+                } }catch (IOException ex) {
+                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidFormatException ex) {
+                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                MenuAnadirFrame obj = new MenuAnadirFrame();
+                obj.setVisible(true);
+                dispose();
+            } else {
+
+                try {
+                    programasExcel.editarNombre(opcionHoja, opcionPalabra, jTextFieldEditar.getText());
+                } catch (IOException ex) {
+                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidFormatException ex) {
+                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                MenuEliminar obj = new MenuEliminar(false);
+                obj.setVisible(true);
+                dispose();
+            }
+        }
     }
-    
-    
-    
-private String opcionHoja;
-private String opcionPalabra;
+
+    private boolean opc;
+    private String opcionHoja;
+    private String opcionPalabra;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonOK;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabelOpcion;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldEditar;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle;
@@ -34,6 +34,8 @@ public class MenuEliminar extends JFrame {
     public MenuEliminar(Boolean opcion) {
         initComponents();
         opc = opcion;
+
+        //TRUE ELIMINAR, FALSE EDITAR
         EditarNombrePeliculaSub e1 = new EditarNombrePeliculaSub();
         EditarGeneroSub e2 = new EditarGeneroSub();
         EditarDirectorSub e3 = new EditarDirectorSub();
@@ -43,6 +45,7 @@ public class MenuEliminar extends JFrame {
         ListSelectionSub e7 = new ListSelectionSub();
         Lista.addListSelectionListener(e7);
         MENUButton e8 = new MENUButton();
+	EditarPeliculaSub e9 = new EditarPeliculaSub();
         EditarNombrePelicula.addActionListener(e1);
         EditarGenero.addActionListener(e2);
         EditarDirector.addActionListener(e3);
@@ -50,6 +53,8 @@ public class MenuEliminar extends JFrame {
         EditarProductor.addActionListener(e5);
         okButton.addActionListener(e6);
         menuButton.addActionListener(e8);
+        EditarPelicula.addActionListener(e9);
+		
     }
 
     /**
@@ -61,94 +66,122 @@ public class MenuEliminar extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        menuButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Lista = new javax.swing.JList<>();
+        EditarNombrePelicula = new javax.swing.JButton();
+        EditarPelicula = new javax.swing.JButton();
+        EditarDirector = new javax.swing.JButton();
+        EditarGenero = new javax.swing.JButton();
+        EditarProductor = new javax.swing.JButton();
+        EditarPais = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 450));
+        setResizable(false);
 
-        Lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        ListaElementos.setViewportView(Lista);
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 450));
+        jPanel1.setRequestFocusEnabled(false);
 
-        EditarProductor.setText("Productores");
-        EditarProductor.setToolTipText("");
-
-        EditarDirector.setText("Directores");
-
-
-        EditarPais.setText("Paises");
-
-        EditarNombrePelicula.setText(VAR_NOMBRE_PELICULA);
-
-        EditarGenero.setText("Géneros");
-
-        okButton.setText("OK");
-
+        menuButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         menuButton.setText("MENU");
 
+        okButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        okButton.setText("OK");
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(EditarNombrePelicula)
-                        .addGap(59, 59, 59)
-                        .addComponent(EditarGenero))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(ListaElementos, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(EditarDirector))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(menuButton)
-                            .addComponent(EditarProductor))))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(EditarPais)
-                        .addGap(43, 43, 43))
-                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(okButton)
-                        .addGap(33, 33, 33))))
+        Lista.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(Lista);
+
+        EditarNombrePelicula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarNombrePelicula.setText("NOMBRE PELICULA");
+
+        EditarPelicula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarPelicula.setText("PELÍCULA");
+
+        EditarDirector.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarDirector.setText("DIRECTORES");
+
+        EditarGenero.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarGenero.setText("GÉNEROS");
+
+        EditarProductor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarProductor.setText("PRODUCTORES");
+
+        EditarPais.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        EditarPais.setText("PAISES");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EditarProductor)
+                            .addComponent(EditarPais))
+                        .addGap(68, 83, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(EditarDirector)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EditarGenero))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(EditarNombrePelicula)
+                                .addGap(94, 94, 94)
+                                .addComponent(EditarPelicula))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(menuButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(okButton)))
+                .addGap(39, 39, 39))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditarProductor)
                     .addComponent(EditarDirector)
-                    .addComponent(EditarPais))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditarNombrePelicula)
                     .addComponent(EditarGenero))
                 .addGap(18, 18, 18)
-                .addComponent(ListaElementos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarPais)
+                    .addComponent(EditarNombrePelicula)
+                    .addComponent(EditarPelicula))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(menuButton))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuButton)
+                    .addComponent(okButton))
+                .addGap(76, 76, 76))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-//GEN-FIRST:event_EditarDirectorActionPerformed
-    // TODO add your handling code here:
-//GEN-LAST:event_EditarDirectorActionPerformed
-
-//GEN-FIRST:event_menuButtonActionPerformed
-    // TODO add your handling code here:
-//GEN-LAST:event_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +235,7 @@ public class MenuEliminar extends JFrame {
                 }
 
                 if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
-                    EditarPelicula obj = new EditarPelicula(decision);
+                    AnadirPeliculaCero obj = new AnadirPeliculaCero(decision);
                     obj.setVisible(true);
                     dispose();
                 } else {
@@ -286,6 +319,18 @@ public class MenuEliminar extends JFrame {
 
         }
     }
+
+    public class EditarPeliculaSub implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e9) {
+
+            variable = VAR_PELICULA;
+            rellenar();
+
+        }
+    }
+
     private boolean opc;
     private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
     private static final String VAR_PELICULA = "Pelicula";
@@ -296,14 +341,16 @@ public class MenuEliminar extends JFrame {
     private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton EditarDirector = new JButton();
-    private JButton EditarGenero= new JButton();
-    private JButton EditarNombrePelicula= new JButton();
-    private JButton EditarPais= new JButton();
-    private JButton EditarProductor= new JButton();
-    private JList Lista = new JList();
-    private JScrollPane ListaElementos= new JScrollPane(); 
-    private JButton menuButton= new JButton();
-    private JButton okButton= new JButton();
+    private javax.swing.JButton EditarDirector;
+    private javax.swing.JButton EditarGenero;
+    private javax.swing.JButton EditarNombrePelicula;
+    private javax.swing.JButton EditarPais;
+    private javax.swing.JButton EditarPelicula;
+    private javax.swing.JButton EditarProductor;
+    private javax.swing.JList<String> Lista;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton menuButton;
+    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

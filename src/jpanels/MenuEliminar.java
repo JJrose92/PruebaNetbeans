@@ -214,7 +214,6 @@ public class MenuEliminar extends JFrame {
                 ProgramasExcel pex = new ProgramasExcel();
                 try {
                     pex.peliculaExistente(variable, decision);
-                    pex.removerFila(variable, decision);
                 } catch (IOException ex) {
                     Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvalidFormatException ex) {

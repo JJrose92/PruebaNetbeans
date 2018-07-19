@@ -49,6 +49,7 @@ public class ProgramasExcel {
     public void peliculaExistente(String variable, String decision) throws InvalidFormatException, IOException {
         boolean encontrado = false;
         boolean celda = false;
+        boolean borradonombre = false;
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         if (!esColumnaVacia(VAR_PELICULA)) {
@@ -56,7 +57,8 @@ public class ProgramasExcel {
             Iterator<Row> iterator = sheet.iterator();
             int numcelda = 0;
             int fila = 0;
-            while (fila <= sheet.getLastRowNum()) {
+            while(!celda){
+            //while (fila <= sheet.getLastRowNum()) {
                 Row next = sheet.getRow(fila);
                 if (!celda) {
                     Iterator<Cell> cellIterator = next.cellIterator();
@@ -68,14 +70,20 @@ public class ProgramasExcel {
                         }
                     }
                 }
+                /*
                 encontrado = next.getCell(numcelda).getStringCellValue().equalsIgnoreCase(decision);
                 if (encontrado) {
-                    removerFilaNombrePelicula(VAR_NOMBRE_PELICULA, sheet.getRow(fila).getCell(0).getStringCellValue());
+                    if (!borradonombre) {
+                        removerFilaNombrePelicula(VAR_NOMBRE_PELICULA, sheet.getRow(fila).getCell(0).getStringCellValue());
+                        borradonombre = true;
+                    }
                     removeRow(sheet, fila);
                 }
                 fila++;
+*/
             }
-
+            removeEmptyRows(VAR_PELICULA, decision, numcelda);
+            removeEmptyRows(variable, decision, 0);
         }
         FileOutputStream salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
@@ -115,28 +123,19 @@ public class ProgramasExcel {
 
     }
 
-    public void removeRow(Sheet sheet, int rowIndex) {
-        int lastRowNum = sheet.getLastRowNum();
-        if (rowIndex >= 0 && rowIndex < lastRowNum) {
-            sheet.shiftRows(rowIndex + 1, lastRowNum, -1);
-        }
-        if (rowIndex == lastRowNum) {
-            Row removingRow = sheet.getRow(rowIndex);
-            if (removingRow != null) {
-                sheet.removeRow(removingRow);
-            }
-        }
-    }
 
-    public void removerFilaNombrePelicula(String hoja, String palabra) throws IOException, InvalidFormatException {
-        Sheet sheet = workbook.getSheet(hoja);
-        Row actualRow;
-        int i = 0;
-        boolean borrado = false;
-        while (i <= sheet.getLastRowNum() && !borrado) {
-            actualRow = sheet.getRow(i);
-            borrado = actualRow.getCell(0).toString().equalsIgnoreCase(palabra);
-            if (borrado) {
+    public void removeEmptyRows(String Sheet, String variable, int celda) {
+        Sheet sheet = workbook.getSheet(Sheet);
+        for (int i = 0; i <= sheet.getLastRowNum(); i++) {
+            boolean isRowEmpty;
+            if (sheet.getRow(i) == null) {
+                sheet.shiftRows(i + 1, sheet.getLastRowNum(), -1);
+                i--;
+                continue;
+            }
+            final Row actualRow = sheet.getRow(i);
+            isRowEmpty = actualRow.getCell(celda).toString().trim().equals(variable);
+            if (isRowEmpty) {
                 if (i == sheet.getLastRowNum()) {
                     sheet.removeRow(actualRow);
                 } else {
@@ -144,18 +143,9 @@ public class ProgramasExcel {
                 }
                 i--;
             }
-            i++;
         }
     }
 
-    public void removerFila(String hoja, String palabra) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
-        workbook = WorkbookFactory.create(fisNew);
-        removerFilaNombrePelicula(hoja, palabra);
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
-        workbook.write(salida);
-        workbook.close();
-    }
 
     public void EditarPelicula(ArrayList lista, String pelicula) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);

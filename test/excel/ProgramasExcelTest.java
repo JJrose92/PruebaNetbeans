@@ -87,47 +87,10 @@ public class ProgramasExcelTest {
         assertEquals(lastRowNum-1, lastRowNum1);
     }
 
-    /**
-     * Test of removeRow method, of class ProgramasExcel.
-     */
-    @Test
-    public void testRemoveRow() {
-        System.out.println("removeRow");
-        Sheet sheet = null;
-        int rowIndex = 0;
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.removeRow(sheet, rowIndex);
-        assertEquals("AALMANZA", true);
 
-    }
 
-    /**
-     * Test of removerFilaNombrePelicula method, of class ProgramasExcel.
-     */
-    @Test
-    public void testRemoverFilaNombrePelicula() throws Exception {
-        System.out.println("removerFilaNombrePelicula");
-        String hoja = "";
-        String palabra = "";
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.removerFilaNombrePelicula(hoja, palabra);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of removerFila method, of class ProgramasExcel.
-     */
-    @Test
-    public void testRemoverFila() throws Exception {
-        System.out.println("removerFila");
-        String hoja = "";
-        String palabra = "";
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.removerFila(hoja, palabra);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of EditarPelicula method, of class ProgramasExcel.

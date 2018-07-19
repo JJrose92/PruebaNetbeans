@@ -33,9 +33,11 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         Anadir e1 = new Anadir();
         Editar e2 = new Editar();
         Eliminar e3 = new Eliminar();
+        Importar e4 = new Importar();
         ANADIRButton.addActionListener(e1);
         EDITARButton.addActionListener(e2);
         ELIMINARButton.addActionListener(e3);
+        IMPORTARButton.addActionListener(e4);
     }
 
     /**
@@ -51,6 +53,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         ELIMINARButton = new javax.swing.JButton();
         EDITARButton = new javax.swing.JButton();
         ANADIRButton = new javax.swing.JButton();
+        IMPORTARButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,16 +70,20 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         ANADIRButton.setText("AÑADIR");
         ANADIRButton.setToolTipText("");
 
+        IMPORTARButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        IMPORTARButton.setText("IMPORTAR");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(269, 269, 269)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ANADIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IMPORTARButton, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(ELIMINARButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ANADIRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EDITARButton, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
@@ -89,7 +96,9 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                 .addComponent(EDITARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(IMPORTARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,8 +140,19 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     public class Eliminar implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e3) {
             MenuEliminar obj = new MenuEliminar(true);
+            obj.setVisible(true);
+            dispose();
+        }
+
+    }
+    
+        public class Importar implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e4) {
+            MenuImportar obj = new MenuImportar();
             obj.setVisible(true);
             dispose();
         }
@@ -148,6 +168,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JButton ANADIRButton;
     private javax.swing.JButton EDITARButton;
     private javax.swing.JButton ELIMINARButton;
+    private javax.swing.JButton IMPORTARButton;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

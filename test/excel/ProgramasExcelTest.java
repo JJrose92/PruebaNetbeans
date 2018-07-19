@@ -5,9 +5,15 @@
  */
 package excel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,22 +26,22 @@ import static org.junit.Assert.*;
  * @author juan-
  */
 public class ProgramasExcelTest {
-    
+
     public ProgramasExcelTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,25 +51,8 @@ public class ProgramasExcelTest {
      */
     @Test
     public void testComprobarExcel() throws Exception {
-        System.out.println("comprobarExcel");
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.comprobarExcel();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+     FileInputStream fisNew = new FileInputStream("reporte.xlsx");
 
-    /**
-     * Test of CrearHoja method, of class ProgramasExcel.
-     */
-    @Test
-    public void testCrearHoja() throws Exception {
-        System.out.println("CrearHoja");
-        String hoja = "";
-        String nombre = "";
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.CrearHoja(hoja, nombre);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,13 +60,31 @@ public class ProgramasExcelTest {
      */
     @Test
     public void testPeliculaExistente() throws Exception {
-        System.out.println("peliculaExistente");
-        String variable = "";
-        String decision = "";
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.peliculaExistente(variable, decision);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        FileInputStream fisNew = new FileInputStream("reporte.xlsx");
+        Workbook create = WorkbookFactory.create(fisNew);
+        String string = "Prueba";
+        ProgramasExcel programasExcel = new ProgramasExcel();
+        int i = 0;
+        /*Sheet createSheet = create.createSheet(string);
+        Row createRow = createSheet.createRow(0);
+        Row createRow1 = createSheet.createRow(1);
+        
+        ArrayList arrayList = new ArrayList();
+        ArrayList arrayList2 = new ArrayList();
+        arrayList.add("El padrino");
+        arrayList.add("Drama");
+        arrayList.add("Francis Ford Coppola");
+        arrayList.add("Estados Unidos");
+        arrayList.add("Paramount Pictures");
+        arrayList.add("1972");
+        arrayList.add("9");
+        */
+        Sheet sheet = create.getSheet("Pelicula");
+        int lastRowNum = sheet.getPhysicalNumberOfRows();
+        programasExcel.peliculaExistente("Genero", "Drama");
+        int lastRowNum1 = sheet.getLastRowNum();
+        create.close();
+        assertEquals(lastRowNum-1, lastRowNum1);
     }
 
     /**
@@ -90,14 +97,6 @@ public class ProgramasExcelTest {
         int rowIndex = 0;
         ProgramasExcel instance = new ProgramasExcel();
         instance.removeRow(sheet, rowIndex);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-        
-                System.out.println("surnames");
-        String m = "AAA";
-        String M = "AAZ";
-
-       
         assertEquals("AALMANZA", true);
 
     }
@@ -345,17 +344,4 @@ public class ProgramasExcelTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of anadirHoja method, of class ProgramasExcel.
-     */
-    @Test
-    public void testAnadirHoja() throws Exception {
-        System.out.println("anadirHoja");
-        String lista = "";
-        ProgramasExcel instance = new ProgramasExcel();
-        instance.anadirHoja(lista);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

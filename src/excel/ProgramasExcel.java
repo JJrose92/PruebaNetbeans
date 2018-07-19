@@ -46,34 +46,6 @@ public class ProgramasExcel {
         }
     }
 
-    public void CrearHoja(String hoja, String nombre) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
-        workbook = WorkbookFactory.create(fisNew);
-        if (comprobarHoja(hoja)) {
-            if (!esColumnaVacia(hoja)) {
-                anadirValorColumna(hoja, nombre);
-                FileOutputStream salida = new FileOutputStream(nombreArchivo);
-                workbook.write(salida);
-                workbook.close();
-            } else {
-
-                crearColumna(hoja, nombre);
-                FileOutputStream salida = new FileOutputStream(nombreArchivo);
-                workbook.write(salida);
-                workbook.close();
-
-            }
-
-        } else {
-            workbook.createSheet(hoja);
-            anadirValorColumna(hoja, nombre);
-            crearColumna(hoja, nombre);
-            FileOutputStream salida = new FileOutputStream(nombreArchivo);
-            workbook.write(salida);
-            workbook.close();
-        }
-    }
-
     public void peliculaExistente(String variable, String decision) throws InvalidFormatException, IOException {
         boolean encontrado = false;
         boolean celda = false;
@@ -84,8 +56,8 @@ public class ProgramasExcel {
             Iterator<Row> iterator = sheet.iterator();
             int numcelda = 0;
             int fila = 0;
-            while (iterator.hasNext()) {
-                Row next = iterator.next();
+            while (fila <= sheet.getLastRowNum()) {
+                Row next = sheet.getRow(fila);
                 if (!celda) {
                     Iterator<Cell> cellIterator = next.cellIterator();
                     while (!celda) {
@@ -100,13 +72,45 @@ public class ProgramasExcel {
                 if (encontrado) {
                     removerFilaNombrePelicula(VAR_NOMBRE_PELICULA, sheet.getRow(fila).getCell(0).getStringCellValue());
                     removeRow(sheet, fila);
-
                 }
                 fila++;
             }
-            FileOutputStream salida = new FileOutputStream(nombreArchivo);
-            workbook.write(salida);
-            workbook.close();
+
+        }
+        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        workbook.write(salida);
+        workbook.close();
+    }
+
+    public void Importar(String ruta) throws InvalidFormatException, IOException {
+        FileInputStream fisNew = new FileInputStream(ruta);
+        Workbook workbook2 = WorkbookFactory.create(fisNew);
+        Iterator<Sheet> sheetIterator = workbook2.sheetIterator();
+        while (sheetIterator.hasNext()) {
+            Sheet next = sheetIterator.next();
+            String sheetName = next.getSheetName();
+            if (sheetName.equalsIgnoreCase("Pelicula")) {
+                Iterator<Row> iterator = next.iterator();
+                iterator.next();
+                while (iterator.hasNext()) {
+                    Row next1 = iterator.next();
+                    ArrayList arrayList = new ArrayList();
+                    Iterator<Cell> cellIterator = next1.cellIterator();
+                    while (cellIterator.hasNext()) {
+                        arrayList.add(cellIterator.next().getStringCellValue());
+                    }
+                    comprobarColumnaPelicula("Pelicula", arrayList);
+                }
+            } else {
+                Iterator<Row> iterator = next.iterator();
+                iterator.next();
+                while (iterator.hasNext()) {
+                    Row next1 = iterator.next();
+                    if (!PerteneceNombreAHoja(sheetName, next1.getCell(0).getStringCellValue())) {
+                        comprobarColumna(sheetName, next1.getCell(0).getStringCellValue());
+                    }
+                }
+            }
         }
 
     }
@@ -276,7 +280,7 @@ public class ProgramasExcel {
             }
         }
         sheet = workbook.getSheet(VAR_PELICULA);
-        
+
         if (!esColumnaVacia(VAR_PELICULA)) {
             encontrado = false;
             int i = 0;
@@ -363,16 +367,21 @@ public class ProgramasExcel {
         int fila = 0;
         int celda = 0;
         Iterator<Row> iterator = sheet.iterator();
-        while (iterator.hasNext()) {
-            fila = iterator.next().getRowNum();
+        boolean encontrado = false;
+        while (!encontrado && iterator.hasNext()) {
+            Row next = iterator.next();
+            fila = next.getRowNum();
+            encontrado = next.getCell(0).getStringCellValue().equalsIgnoreCase(lista.get(0).toString());
         }
-        Row row = sheet.createRow(fila + 1);
-        Iterator iterator1 = lista.iterator();
-        while (iterator1.hasNext()) {
-            createCell = row.createCell(celda);
-            Object next = iterator1.next();
-            createCell.setCellValue(next.toString());
-            celda++;
+        if (!encontrado) {
+            Row row = sheet.createRow(fila + 1);
+            Iterator iterator1 = lista.iterator();
+            while (iterator1.hasNext()) {
+                createCell = row.createCell(celda);
+                Object next = iterator1.next();
+                createCell.setCellValue(next.toString());
+                celda++;
+            }
         }
         FileOutputStream salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
@@ -469,12 +478,4 @@ public class ProgramasExcel {
         }
     }
 
-    public void anadirHoja(String lista) throws FileNotFoundException, IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
-        workbook = WorkbookFactory.create(fisNew);
-        workbook.createSheet(lista);
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
-        workbook.write(salida);
-        workbook.close();
-    }
 }

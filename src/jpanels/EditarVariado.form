@@ -90,6 +90,11 @@
         <Component class="javax.swing.JTextField" name="jTextFieldEditar">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelOpcion">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonOK">
           <Properties>

@@ -20,7 +20,6 @@ public class ProgramaPrincipal {
     
      public static void main(String[] args) throws IOException, InvalidFormatException {
         
-
          MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
          menuPrincipalFrame.setVisible(true);
          

@@ -54,11 +54,12 @@ public class EditarVariado extends javax.swing.JFrame {
         jButtonMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 450));
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabelOpcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         jButtonOK.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButtonOK.setText("OK");

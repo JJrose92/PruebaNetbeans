@@ -22,12 +22,12 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  *
  * @author Juan
  */
-public class AnadirPeliculaCero extends javax.swing.JFrame {
+public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuFrame
      */
-    public AnadirPeliculaCero(String pelicula) {
+    public AnadirEditarPeliculaCero(String pelicula) {
         opc = pelicula.equalsIgnoreCase("");
         initComponents();
         OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
@@ -235,7 +235,7 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
                 obj.setVisible(true);
                 dispose();
             } else {
-                MenuEliminar obj = new MenuEliminar(false);
+                MenuEditarEliminar obj = new MenuEditarEliminar(false);
                 obj.setVisible(true);
                 dispose();
             }
@@ -309,17 +309,17 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
 
                 //}
             } catch (IOException ex) {
-                Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirEditarPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InvalidFormatException ex) {
-                Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnadirEditarPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (opc) {
-                AnadirPeliculaCero obj = new AnadirPeliculaCero("");
+                AnadirEditarPeliculaCero obj = new AnadirEditarPeliculaCero("");
                 obj.setVisible(true);
                 dispose();
                 JOptionPane.showMessageDialog(jPanel1, "Pelicula añadida correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                MenuEliminar obj = new MenuEliminar(false);
+                MenuEditarEliminar obj = new MenuEditarEliminar(false);
                 obj.setVisible(true);
                 dispose();
                 JOptionPane.showMessageDialog(jPanel1, "Pelicula editada correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
@@ -343,9 +343,9 @@ public class AnadirPeliculaCero extends javax.swing.JFrame {
             AnojTextField.setText(datosPelicula.get(5).toString());
             notaJText.setText(datosPelicula.get(6).toString());
         } catch (IOException ex) {
-            Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AnadirEditarPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidFormatException ex) {
-            Logger.getLogger(AnadirPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AnadirEditarPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

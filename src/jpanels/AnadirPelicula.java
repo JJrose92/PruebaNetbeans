@@ -149,7 +149,7 @@ public class AnadirPelicula extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            AnadirPeliculaCero obj = new AnadirPeliculaCero("");
+            AnadirEditarPeliculaCero obj = new AnadirEditarPeliculaCero("");
             obj.setVisible(true);
             dispose();
         }

@@ -18,12 +18,12 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  *
  * @author juan-
  */
-public class EditarVariado extends javax.swing.JFrame {
+public class EditarAnadirVariado extends javax.swing.JFrame {
 
     /**
      * Creates new form EditarVariado
      */
-    public EditarVariado(String hoja, String palabra) {
+    public EditarAnadirVariado(String hoja, String palabra) {
         initComponents();
         opc = palabra.equalsIgnoreCase("");
         Menu e1 = new Menu();
@@ -137,11 +137,16 @@ public class EditarVariado extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
-            MenuEliminar obj = new MenuEliminar(false);
+            if (opc){
+                MenuAnadirFrame obj = new MenuAnadirFrame();
+                obj.setVisible(true);
+                dispose();
+            }else{
+            MenuEditarEliminar obj = new MenuEditarEliminar(false);
             obj.setVisible(true);
             dispose();
         }
-
+        }
     }
 
     public class OK implements ActionListener {
@@ -159,9 +164,9 @@ public class EditarVariado extends javax.swing.JFrame {
                             programasExcel.comprobarColumna(opcionHoja, jTextFieldEditar.getText());
                         }
                     } catch (IOException ex) {
-                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(EditarAnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (InvalidFormatException ex) {
-                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(EditarAnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     MenuAnadirFrame obj = new MenuAnadirFrame();
                     obj.setVisible(true);
@@ -172,11 +177,11 @@ public class EditarVariado extends javax.swing.JFrame {
                     try {
                         programasExcel.editarNombre(opcionHoja, opcionPalabra, jTextFieldEditar.getText());
                     } catch (IOException ex) {
-                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(EditarAnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (InvalidFormatException ex) {
-                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(EditarAnadirVariado.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    MenuEliminar obj = new MenuEliminar(false);
+                    MenuEditarEliminar obj = new MenuEditarEliminar(false);
                     obj.setVisible(true);
                     dispose();
                     JOptionPane.showMessageDialog(jPanel1, opcionHoja + " editado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);

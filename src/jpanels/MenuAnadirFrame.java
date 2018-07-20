@@ -150,7 +150,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e6) {
             opcion = "Nombre Pelicula";
-            EditarVariado obj = new EditarVariado(opcion, "");
+            EditarAnadirVariado obj = new EditarAnadirVariado(opcion, "");
             obj.setVisible(true);
             dispose();
         }
@@ -161,7 +161,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e2) {
             opcion = "Productor";
-            EditarVariado obj = new EditarVariado(opcion, "");
+            EditarAnadirVariado obj = new EditarAnadirVariado(opcion, "");
 
             obj.setVisible(true);
             dispose();
@@ -183,7 +183,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e4) {
             opcion = "Director";
-            EditarVariado obj = new EditarVariado(opcion, "");
+            EditarAnadirVariado obj = new EditarAnadirVariado(opcion, "");
             obj.setVisible(true);
             dispose();
         }
@@ -194,7 +194,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e5) {
             opcion = "Pais";
-            EditarVariado obj = new EditarVariado(opcion, "");
+            EditarAnadirVariado obj = new EditarAnadirVariado(opcion, "");
             obj.setVisible(true);
             dispose();
         }
@@ -205,7 +205,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e7) {
             opcion = "Genero";
-            EditarVariado obj = new EditarVariado(opcion, "");
+            EditarAnadirVariado obj = new EditarAnadirVariado(opcion, "");
             obj.setVisible(true);
             dispose();
         }

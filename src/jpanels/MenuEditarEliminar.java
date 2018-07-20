@@ -27,12 +27,12 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  *
  * @author Juan
  */
-public class MenuEliminar extends JFrame {
+public class MenuEditarEliminar extends JFrame {
 
     /**
      * Creates new form MenuEditar
      */
-    public MenuEliminar(Boolean opcion) {
+    public MenuEditarEliminar(Boolean opcion) {
         initComponents();
         opc = opcion;
 
@@ -217,11 +217,11 @@ public class MenuEliminar extends JFrame {
                 try {
                     pex.peliculaExistente(variable, decision);
                 } catch (IOException ex) {
-                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvalidFormatException ex) {
-                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                MenuEliminar obj = new MenuEliminar(true);
+                MenuEditarEliminar obj = new MenuEditarEliminar(true);
                 obj.setVisible(true);        
                 dispose();
                 JOptionPane.showMessageDialog(jPanel1, variable + " eliminado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
@@ -231,17 +231,17 @@ public class MenuEliminar extends JFrame {
                 try {
                     PerteneceNombreAHoja = pex.PerteneceNombreAHoja(VAR_PELICULA, decision);
                 } catch (IOException ex) {
-                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvalidFormatException ex) {
-                    Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
-                    AnadirPeliculaCero obj = new AnadirPeliculaCero(decision);
+                    AnadirEditarPeliculaCero obj = new AnadirEditarPeliculaCero(decision);
                     obj.setVisible(true);
                     dispose();
                 } else {
-                    EditarVariado obj = new EditarVariado(variable, decision);
+                    EditarAnadirVariado obj = new EditarAnadirVariado(variable, decision);
                     obj.setVisible(true);
                     dispose();
                 }
@@ -262,9 +262,9 @@ public class MenuEliminar extends JFrame {
                 Lista.setListData(devolverNombres);
             }
         } catch (IOException ex) {
-            Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidFormatException ex) {
-            Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

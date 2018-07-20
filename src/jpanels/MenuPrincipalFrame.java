@@ -130,7 +130,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
-            MenuEliminar obj = new MenuEliminar(false);
+            MenuEditarEliminar obj = new MenuEditarEliminar(false);
             obj.setVisible(true);
             dispose();
         }
@@ -141,7 +141,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-            MenuEliminar obj = new MenuEliminar(true);
+            MenuEditarEliminar obj = new MenuEditarEliminar(true);
             obj.setVisible(true);
             dispose();
         }

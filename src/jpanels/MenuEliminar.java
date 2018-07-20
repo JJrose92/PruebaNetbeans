@@ -15,6 +15,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle;
 import javax.swing.ListSelectionModel;
@@ -210,6 +211,7 @@ public class MenuEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
+            if (!variable.isEmpty() && !decision.isEmpty()){
             if (opc) {
                 ProgramasExcel pex = new ProgramasExcel();
                 try {
@@ -220,8 +222,9 @@ public class MenuEliminar extends JFrame {
                     Logger.getLogger(MenuEliminar.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 MenuEliminar obj = new MenuEliminar(true);
-                obj.setVisible(true);
+                obj.setVisible(true);        
                 dispose();
+                JOptionPane.showMessageDialog(jPanel1, variable + " eliminado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 ProgramasExcel pex = new ProgramasExcel();
                 boolean PerteneceNombreAHoja = false;
@@ -244,6 +247,9 @@ public class MenuEliminar extends JFrame {
                 }
             }
 
+        }else{
+                JOptionPane.showMessageDialog(jPanel1, "Algun campo no ha sido seleccionado", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

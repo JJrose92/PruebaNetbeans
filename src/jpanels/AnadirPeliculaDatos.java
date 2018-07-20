@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -344,13 +345,41 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e1) {
             ArrayList arrayList = new ArrayList();
-            arrayList.add(jListNombrePeliculas.getSelectedValue());
-            arrayList.add(jListGeneros.getSelectedValue());
-            arrayList.add(jListDirectores.getSelectedValue());
-            arrayList.add(jListPaises.getSelectedValue());
-            arrayList.add(jListProductores.getSelectedValue());
-            arrayList.add(jListYears.getSelectedValue());
-            arrayList.add(jListNotas.getSelectedValue());
+            if (jListNombrePeliculas.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Nombre Pelicula Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListNombrePeliculas.getSelectedValue());
+            }
+            if (jListGeneros.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Género Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListGeneros.getSelectedValue());
+            }
+            if (jListDirectores.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Director Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListDirectores.getSelectedValue());
+            }
+            if (jListPaises.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Paí Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListPaises.getSelectedValue());
+            }
+            if (jListProductores.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Productor Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListProductores.getSelectedValue());
+            }
+            if (jListYears.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Años Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListYears.getSelectedValue());
+            }
+            if (jListNotas.getSelectedValue().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Campo Nota Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                arrayList.add(jListNotas.getSelectedValue());
+            }
 
             AnadirPeliculaDatos obj = new AnadirPeliculaDatos();
             ProgramasExcel programasExcel = new ProgramasExcel();
@@ -365,6 +394,7 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
             }
             obj.setVisible(true);
             dispose();
+            JOptionPane.showMessageDialog(jPanel1, "Pelicula añadida correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

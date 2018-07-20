@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -156,18 +157,22 @@ public class MenuImportar extends javax.swing.JFrame {
 
     private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
         ProgramasExcel programasExcel = new ProgramasExcel();
-        try {
-            programasExcel.Importar(RUTA.getText());
-        } catch (InvalidFormatException ex) {
-            Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
-        menuPrincipalFrame.setVisible(true);
-        dispose();
+        if (RUTA.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento", "Error!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                programasExcel.Importar(RUTA.getText());
+            } catch (InvalidFormatException ex) {
+                Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
+            menuPrincipalFrame.setVisible(true);
+            dispose();
+            JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_OKButtonActionPerformed
-
+    }
     private void VOLVERButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLVERButtonActionPerformed
         MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
         menuPrincipalFrame.setVisible(true);

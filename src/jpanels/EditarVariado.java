@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
@@ -149,30 +150,37 @@ public class EditarVariado extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e3) {
 
             ProgramasExcel programasExcel = new ProgramasExcel();
-            if (opc) {
-                try {
-                    if (!programasExcel.PerteneceNombreAHoja(opcionHoja, jTextFieldEditar.getText())) {
-                        programasExcel.comprobarColumna(opcionHoja, jTextFieldEditar.getText());
-                } }catch (IOException ex) {
-                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InvalidFormatException ex) {
-                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                MenuAnadirFrame obj = new MenuAnadirFrame();
-                obj.setVisible(true);
-                dispose();
+            if (jTextFieldEditar.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Existe Algun Campo Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
+                if (opc) {
+                    try {
+                        if (!programasExcel.PerteneceNombreAHoja(opcionHoja, jTextFieldEditar.getText())) {
+                            programasExcel.comprobarColumna(opcionHoja, jTextFieldEditar.getText());
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InvalidFormatException ex) {
+                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    MenuAnadirFrame obj = new MenuAnadirFrame();
+                    obj.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(jPanel1, opcionHoja + " añadido correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                } else {
 
-                try {
-                    programasExcel.editarNombre(opcionHoja, opcionPalabra, jTextFieldEditar.getText());
-                } catch (IOException ex) {
-                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InvalidFormatException ex) {
-                    Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        programasExcel.editarNombre(opcionHoja, opcionPalabra, jTextFieldEditar.getText());
+                    } catch (IOException ex) {
+                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InvalidFormatException ex) {
+                        Logger.getLogger(EditarVariado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    MenuEliminar obj = new MenuEliminar(false);
+                    obj.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(jPanel1, opcionHoja + " editado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
                 }
-                MenuEliminar obj = new MenuEliminar(false);
-                obj.setVisible(true);
-                dispose();
             }
         }
     }

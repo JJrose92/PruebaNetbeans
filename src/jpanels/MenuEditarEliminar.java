@@ -210,7 +210,7 @@ public class MenuEditarEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
-            if (variable != null && decision != null) {
+            if (variable != null && decision != "") {
                 ProgramasExcel pex = new ProgramasExcel();
                 OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
                 if (opc) {
@@ -357,7 +357,7 @@ public class MenuEditarEliminar extends JFrame {
     private static final String VAR_DIRECTOR = "Director";
     private static final String VAR_PAIS = "Pais";
     private static final String VAR_PRODUCTOR = "Productor";
-    private String decision;
+    private String decision ="";
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarDirector;

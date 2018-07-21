@@ -293,19 +293,30 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
                 String[] devolverNombres = programasExcel.devolverNombres(toString);
                 switch (i) {
                     case 1:
-                        jListNombrePeliculas.setListData(devolverNombres);
+                        if (devolverNombres != null) {
+                            jListNombrePeliculas.setListData(devolverNombres);
+                        }
                         break;
                     case 2:
-                        jListGeneros.setListData(devolverNombres);
+                        if (devolverNombres != null) {
+                            jListGeneros.setListData(devolverNombres);
+                        }
                         break;
                     case 3:
-                        jListDirectores.setListData(devolverNombres);
+                        if (devolverNombres != null) {
+                            jListDirectores.setListData(devolverNombres);
+                        }
+
                         break;
                     case 4:
-                        jListPaises.setListData(devolverNombres);
+                        if (devolverNombres != null) {
+                            jListPaises.setListData(devolverNombres);
+                        }
                         break;
                     default:
-                        jListProductores.setListData(devolverNombres);
+                        if (devolverNombres != null) {
+                            jListProductores.setListData(devolverNombres);
+                        }
                         break;
                 }
                 i++;

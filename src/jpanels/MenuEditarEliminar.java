@@ -46,7 +46,7 @@ public class MenuEditarEliminar extends JFrame {
         ListSelectionSub e7 = new ListSelectionSub();
         Lista.addListSelectionListener(e7);
         MENUButton e8 = new MENUButton();
-	EditarPeliculaSub e9 = new EditarPeliculaSub();
+        EditarPeliculaSub e9 = new EditarPeliculaSub();
         EditarNombrePelicula.addActionListener(e1);
         EditarGenero.addActionListener(e2);
         EditarDirector.addActionListener(e3);
@@ -55,7 +55,7 @@ public class MenuEditarEliminar extends JFrame {
         okButton.addActionListener(e6);
         menuButton.addActionListener(e8);
         EditarPelicula.addActionListener(e9);
-		
+
     }
 
     /**
@@ -195,7 +195,6 @@ public class MenuEditarEliminar extends JFrame {
             obj.setVisible(true);
             dispose();
         }
-
     }
 
     public class ListSelectionSub implements ListSelectionListener {
@@ -211,43 +210,50 @@ public class MenuEditarEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
-            if (!variable.isEmpty() && !decision.isEmpty()){
-            if (opc) {
+            if (variable != null && decision != null) {
                 ProgramasExcel pex = new ProgramasExcel();
-                try {
-                    pex.peliculaExistente(variable, decision);
-                } catch (IOException ex) {
-                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InvalidFormatException ex) {
-                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                MenuEditarEliminar obj = new MenuEditarEliminar(true);
-                obj.setVisible(true);        
-                dispose();
-                JOptionPane.showMessageDialog(jPanel1, variable + " eliminado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                ProgramasExcel pex = new ProgramasExcel();
-                boolean PerteneceNombreAHoja = false;
-                try {
-                    PerteneceNombreAHoja = pex.PerteneceNombreAHoja(VAR_PELICULA, decision);
-                } catch (IOException ex) {
-                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InvalidFormatException ex) {
-                    Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
-                    AnadirEditarPeliculaCero obj = new AnadirEditarPeliculaCero(decision);
-                    obj.setVisible(true);
-                    dispose();
+                OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+               if (opc) {
+                    boolean mensajeEliminar = optimizarCodigo.mensajeEliminar(jPanel1, variable, decision);
+                    if (mensajeEliminar) {
+                        try {
+                            if (borrarnombre){
+                                pex.peliculaExistente(VAR_NOMBRE_PELICULA, decision);
+                            }else{
+                            pex.peliculaExistente(variable, decision);
+                            }
+                            } catch (IOException ex) {
+                            Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (InvalidFormatException ex) {
+                            Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        MenuEditarEliminar obj = new MenuEditarEliminar(true);
+                        obj.setVisible(true);
+                        dispose();
+                        JOptionPane.showMessageDialog(jPanel1, variable + " eliminado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 } else {
-                    EditarAnadirVariado obj = new EditarAnadirVariado(variable, decision);
-                    obj.setVisible(true);
-                    dispose();
-                }
-            }
+                    boolean PerteneceNombreAHoja = false;
+                    try {
+                        PerteneceNombreAHoja = pex.PerteneceNombreAHoja(VAR_PELICULA, decision);
+                    } catch (IOException ex) {
+                        Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InvalidFormatException ex) {
+                        Logger.getLogger(MenuEditarEliminar.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-        }else{
+                    if ((variable.equalsIgnoreCase(VAR_PELICULA)) && (PerteneceNombreAHoja)) {
+                        AnadirEditarPeliculaCero obj = new AnadirEditarPeliculaCero(decision);
+                        obj.setVisible(true);
+                        dispose();
+                    } else {
+                        EditarAnadirVariado obj = new EditarAnadirVariado(variable, decision);
+                        obj.setVisible(true);
+                        dispose();
+                    }
+                }
+
+            } else {
                 JOptionPane.showMessageDialog(jPanel1, "Algun campo no ha sido seleccionado", "Error!", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -329,13 +335,13 @@ public class MenuEditarEliminar extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e9) {
-
+            borrarnombre = true;
             variable = VAR_PELICULA;
             rellenar();
 
         }
     }
-
+    private boolean borrarnombre = false;
     private boolean opc;
     private static final String VAR_NOMBRE_PELICULA = "Nombre Pelicula";
     private static final String VAR_PELICULA = "Pelicula";

@@ -38,6 +38,8 @@ public class ProgramasExcel {
     private static final String VAR_DIRECTOR = "Director";
     private static final String VAR_PAIS = "Pais";
     private static final String VAR_PRODUCTOR = "Productor";
+    private FileInputStream fisNew;
+    private FileOutputStream salida;
 
     public void comprobarExcel() throws IOException {
         File archivo = new File(nombreArchivo);
@@ -50,7 +52,7 @@ public class ProgramasExcel {
         boolean encontrado = false;
         boolean celda = false;
         boolean borradonombre = false;
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         if (!esColumnaVacia(VAR_PELICULA)) {
             Sheet sheet = workbook.getSheet(VAR_PELICULA);
@@ -85,7 +87,7 @@ public class ProgramasExcel {
             removeEmptyRows(VAR_PELICULA, decision, numcelda);
             removeEmptyRows(variable, decision, 0);
         }
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
@@ -178,13 +180,13 @@ public class ProgramasExcel {
                 next.getCell(0).setCellValue(lista.get(0).toString());
             }
         }
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
 
     public ArrayList datosPelicula(String Pelicula) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         ArrayList arrayList = new ArrayList();
         Sheet sheet = workbook.getSheet(VAR_PELICULA);
@@ -206,7 +208,7 @@ public class ProgramasExcel {
     }
 
     public ArrayList nombresHojas() throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         ArrayList arrayList = new ArrayList();
         Iterator<Sheet> sheetIterator = workbook.sheetIterator();
@@ -218,7 +220,7 @@ public class ProgramasExcel {
     }
 
     public void anadirValorColumna(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         int fila = 0;
@@ -235,7 +237,7 @@ public class ProgramasExcel {
     }
 
     public void crearColumna(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         Row row = sheet.createRow(0);
@@ -244,7 +246,7 @@ public class ProgramasExcel {
         Cell palabra = row1.createCell(0);
         titulo.setCellValue(hoja);
         palabra.setCellValue(nombre);
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
@@ -256,7 +258,7 @@ public class ProgramasExcel {
     }
 
     public void editarNombre(String hoja, String palabra, String nuevaPalabra) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         Iterator<Row> iterator = sheet.iterator();
@@ -298,7 +300,7 @@ public class ProgramasExcel {
                 }
             }
         }
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
@@ -314,7 +316,7 @@ public class ProgramasExcel {
     }
 
     public void crearColumnaPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         Cell createCell;
@@ -344,13 +346,13 @@ public class ProgramasExcel {
             createCell.setCellValue(next.toString());
             celda++;
         }
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
 
     public void anadirPelicula(String hoja, ArrayList lista) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         Cell createCell;
@@ -373,13 +375,13 @@ public class ProgramasExcel {
                 celda++;
             }
         }
-        FileOutputStream salida = new FileOutputStream(nombreArchivo);
+        salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
     }
 
     public boolean PerteneceNombreAHoja(String hoja, String nombre) throws FileNotFoundException, IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         Sheet sheet = workbook.getSheet(hoja);
         boolean encontrado = false;
@@ -400,7 +402,7 @@ public class ProgramasExcel {
     }
 
     public void comprobarColumna(String hoja, String Nombre) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         if (esColumnaVacia(hoja)) {
             crearColumna(hoja, Nombre);
@@ -410,7 +412,7 @@ public class ProgramasExcel {
     }
 
     public String[] devolverNombres(String hoja) throws IOException, InvalidFormatException {
-        FileInputStream fisNew = new FileInputStream(nombreArchivo);
+        fisNew = new FileInputStream(nombreArchivo);
         workbook = WorkbookFactory.create(fisNew);
         String name[] = null;
         int x = 0;
@@ -450,7 +452,7 @@ public class ProgramasExcel {
             // Creamos el flujo de salida de datos,
             // apuntando al archivo donde queremos 
             // almacenar el libro de Excel
-            FileOutputStream salida = new FileOutputStream(nombreArchivo);
+            salida = new FileOutputStream(nombreArchivo);
 
             // Almacenamos el libro de 
             // Excel via ese 

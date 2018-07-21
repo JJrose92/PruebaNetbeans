@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -69,6 +70,95 @@ public class OptimizarCodigo {
 
     }
 
+    public boolean mensajeEditarAnadirPelicula(JPanel jPanel1, ArrayList arrayList, ArrayList datosPelicula) {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        if (datosPelicula == null) {
+        int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea añadir la pelicula con estos datos:"
+                + "\nNombre Pelicula: " + arrayList.get(0).toString()
+                + "\nGenero: " + arrayList.get(1).toString()
+                + "\nDirector: " + arrayList.get(2).toString()
+                + "\nPaís: " + arrayList.get(3).toString()
+                + "\nProductor: " + arrayList.get(4).toString()
+                + "\nAño: " + arrayList.get(5).toString()
+                + "\nNota: " + arrayList.get(6).toString(),
+                "Mensaje de Confirmacion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
+        }
+        } else {
+            int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea añadir la pelicula con estos datos:"
+                    + "\nNombre Pelicula: " + datosPelicula.get(0).toString() + " por " + arrayList.get(0).toString()
+                    + "\nGenero: " + datosPelicula.get(1).toString() + " por " + arrayList.get(1).toString()
+                    + "\nDirector: " + datosPelicula.get(2).toString() + " por " + arrayList.get(2).toString()
+                    + "\nPaís: " + datosPelicula.get(3).toString() + " por " + arrayList.get(3).toString()
+                    + "\nProductor: " + datosPelicula.get(4).toString() + " por " + arrayList.get(4).toString()
+                    + "\nAño: " + datosPelicula.get(5).toString() + " por " + arrayList.get(5).toString()
+                    + "\nNota: " + datosPelicula.get(6).toString() + " por " + arrayList.get(6).toString(),
+                    "Mensaje de Confirmacion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
+    public boolean mensajeAnadirEditarVariado(JPanel rootPane, String opcionHoja, String text, String palabraAntigua, boolean opc) {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        if (palabraAntigua == null) {
+            int eleccion = JOptionPane.showOptionDialog(rootPane, "En realidad desea añadir lo siguiente:"
+                    + "\n" + opcionHoja + ": " + text, "Mensaje de Confirmacion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones,
+                    "Aceptar");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            int eleccion = JOptionPane.showOptionDialog(rootPane, "En realidad desea editar en todas sus apariciones lo siguiente:"
+                    + "\n" + opcionHoja + ": " + palabraAntigua + " por " + text, "Mensaje de Confirmacion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones,
+                    "Aceptar");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
+    public boolean mensajeEliminar(JPanel jPanel1, String variable, String decision) {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea eliminar en todas sus apariciones lo siguiente:"
+                + "\n" + variable + ": " + decision, "Mensaje de Confirmacion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+        public boolean mensajeImportar(JPanel jPanel1, String ruta) {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea importar el archivo que esta en la siguiente ruta:"
+                + "\nRuta: " + ruta, "Mensaje de Confirmacion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

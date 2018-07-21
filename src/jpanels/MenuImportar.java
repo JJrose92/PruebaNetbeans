@@ -160,6 +160,9 @@ public class MenuImportar extends javax.swing.JFrame {
         if (RUTA.getText().isEmpty()) {
             JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento", "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
+            OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+            boolean mensajeImportar = optimizarCodigo.mensajeImportar(jPanel1, RUTA.getText());
+            if (mensajeImportar){
             try {
                 programasExcel.Importar(RUTA.getText());
             } catch (InvalidFormatException ex) {
@@ -171,6 +174,7 @@ public class MenuImportar extends javax.swing.JFrame {
             menuPrincipalFrame.setVisible(true);
             dispose();
             JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+            }
     }//GEN-LAST:event_OKButtonActionPerformed
     }
     private void VOLVERButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLVERButtonActionPerformed

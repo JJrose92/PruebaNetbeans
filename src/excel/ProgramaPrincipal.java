@@ -19,7 +19,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 public class ProgramaPrincipal {
     
      public static void main(String[] args) throws IOException, InvalidFormatException {
-        
+         
          MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
          menuPrincipalFrame.setVisible(true);
          

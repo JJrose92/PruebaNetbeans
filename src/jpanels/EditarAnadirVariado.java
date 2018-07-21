@@ -26,6 +26,9 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
     public EditarAnadirVariado(String hoja, String palabra) {
         initComponents();
         opc = palabra.equalsIgnoreCase("");
+        if (!opc){
+        palabraAntigua = palabra;
+        }
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         OK e3 = new OK();
@@ -153,11 +156,14 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
-
+            boolean seguir;
             ProgramasExcel programasExcel = new ProgramasExcel();
+            OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
             if (jTextFieldEditar.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(jPanel1, "Existe Algun Campo Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
+                boolean editaroanadirDato = optimizarCodigo.mensajeAnadirEditarVariado(jPanel1, opcionHoja,jTextFieldEditar.getText(), palabraAntigua,opc);
+                if (editaroanadirDato){
                 if (opc) {
                     try {
                         if (!programasExcel.PerteneceNombreAHoja(opcionHoja, jTextFieldEditar.getText())) {
@@ -187,9 +193,10 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(jPanel1, opcionHoja + " editado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
+            }
         }
     }
-
+    private String palabraAntigua;
     private boolean opc;
     private String opcionHoja;
     private String opcionPalabra;

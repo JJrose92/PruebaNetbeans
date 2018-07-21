@@ -344,57 +344,71 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
+            boolean positivo = true;
             ArrayList arrayList = new ArrayList();
-            if (jListNombrePeliculas.getSelectedValue().isEmpty()) {
+            if (jListNombrePeliculas.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Nombre Pelicula Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListNombrePeliculas.getSelectedValue());
             }
-            if (jListGeneros.getSelectedValue().isEmpty()) {
+            if (jListGeneros.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Género Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListGeneros.getSelectedValue());
             }
-            if (jListDirectores.getSelectedValue().isEmpty()) {
+            if (jListDirectores.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Director Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListDirectores.getSelectedValue());
             }
-            if (jListPaises.getSelectedValue().isEmpty()) {
-                JOptionPane.showMessageDialog(jPanel1, "Campo Paí Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+            if (jListPaises.isSelectionEmpty()) {
+                positivo = false;
+                JOptionPane.showMessageDialog(jPanel1, "Campo País Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListPaises.getSelectedValue());
             }
-            if (jListProductores.getSelectedValue().isEmpty()) {
+            if (jListProductores.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Productor Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListProductores.getSelectedValue());
             }
-            if (jListYears.getSelectedValue().isEmpty()) {
+            if (jListYears.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Años Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListYears.getSelectedValue());
             }
-            if (jListNotas.getSelectedValue().isEmpty()) {
+            if (jListNotas.isSelectionEmpty()) {
+                positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Nota Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 arrayList.add(jListNotas.getSelectedValue());
             }
+            if (positivo) {
+                OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+                ArrayList arraylist2 = null;
+                boolean anadirPelicula = optimizarCodigo.mensajeEditarAnadirPelicula(jPanel1, arrayList, arraylist2);
+                if (anadirPelicula) {
+                    AnadirPeliculaDatos obj = new AnadirPeliculaDatos();
+                    ProgramasExcel programasExcel = new ProgramasExcel();
+                    try {
 
-            AnadirPeliculaDatos obj = new AnadirPeliculaDatos();
-            ProgramasExcel programasExcel = new ProgramasExcel();
-            try {
+                        programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
 
-                programasExcel.comprobarColumnaPelicula("Pelicula", arrayList);
-
-            } catch (IOException ex) {
-                Logger.getLogger(AnadirPeliculaDatos.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(AnadirPeliculaDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AnadirPeliculaDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InvalidFormatException ex) {
+                        Logger.getLogger(AnadirPeliculaDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    obj.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(jPanel1, "Pelicula añadida correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-            obj.setVisible(true);
-            dispose();
-            JOptionPane.showMessageDialog(jPanel1, "Pelicula añadida correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

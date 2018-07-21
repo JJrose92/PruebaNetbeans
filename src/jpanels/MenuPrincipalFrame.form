@@ -52,11 +52,9 @@
                   <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="IMPORTARButton" pref="151" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ELIMINARButton" max="32767" attributes="0"/>
-                          <Component id="ANADIRButton" max="32767" attributes="0"/>
-                          <Component id="EDITARButton" alignment="0" pref="151" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="ELIMINARButton" max="32767" attributes="0"/>
+                      <Component id="ANADIRButton" max="32767" attributes="0"/>
+                      <Component id="EDITARButton" alignment="0" pref="151" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="326" max="32767" attributes="0"/>
               </Group>

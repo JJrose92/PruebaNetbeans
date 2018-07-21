@@ -27,6 +27,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         ProgramasExcel programasExcel = new ProgramasExcel();
         try {
             programasExcel.comprobarExcel();
+            
         } catch (IOException ex) {
             Logger.getLogger(MenuPrincipalFrame.class.getName()).log(Level.SEVERE, null, ex);
         }

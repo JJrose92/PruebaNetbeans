@@ -104,7 +104,7 @@ public class ProgramasExcel {
             Sheet next = sheetIterator.next();
             String sheetName = next.getSheetName();
             correcto = sheetName.equalsIgnoreCase(nombresHojas.get(i).toString());
-            if (!correcto) {
+            if (correcto) {
                 if (sheetName.equalsIgnoreCase("Pelicula")) {
                     row = next.getRow(0);
                     if (row != null) {

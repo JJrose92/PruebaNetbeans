@@ -135,7 +135,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public class Menu implements ActionListener {
+    private class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -146,7 +146,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
 
     }
 
-    public class Nombre_Pelicula implements ActionListener {
+    private class Nombre_Pelicula implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
@@ -157,7 +157,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
     }
 
-    public class Productor implements ActionListener {
+    private class Productor implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -169,7 +169,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
     }
 
-    public class Pelicula implements ActionListener {
+    private class Pelicula implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
@@ -179,7 +179,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
     }
 
-    public class Director implements ActionListener {
+    private class Director implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
@@ -190,7 +190,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
     }
 
-    public class Pais implements ActionListener {
+    private class Pais implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e5) {
@@ -201,7 +201,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         }
     }
 
-    public class Genero implements ActionListener {
+    private class Genero implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e7) {

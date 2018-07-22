@@ -6,6 +6,8 @@
 package jpanels;
 
 import excel.ProgramasExcel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -40,6 +42,13 @@ public class MenuImportar extends javax.swing.JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Volver e1 = new Volver();
+        Abrir e2 = new Abrir();
+        Ok e3 = new Ok();
+        VOLVERButton.addActionListener(e1);
+        ABRIRJbutton.addActionListener(e2);
+        OKButton.addActionListener(e3);
+
         this.setLocationRelativeTo(null);
     }
 
@@ -53,78 +62,66 @@ public class MenuImportar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        RUTA = new javax.swing.JTextField();
-        abrir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        ABRIRJbutton = new javax.swing.JButton();
         VOLVERButton = new javax.swing.JButton();
         OKButton = new javax.swing.JButton();
+        RUTAJTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 450));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        abrir.setBackground(new java.awt.Color(153, 255, 255));
-        abrir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        abrir.setText("ABRIR");
-        abrir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("RUTA: ");
 
+        ABRIRJbutton.setBackground(new java.awt.Color(51, 255, 255));
+        ABRIRJbutton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ABRIRJbutton.setText("ABRIR");
+
         VOLVERButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         VOLVERButton.setText("VOLVER");
-        VOLVERButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VOLVERButtonActionPerformed(evt);
-            }
-        });
 
         OKButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         OKButton.setText("OK");
-        OKButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(RUTA, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(abrir)
-                .addGap(0, 148, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(RUTAJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ABRIRJbutton)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(VOLVERButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(OKButton)
+                .addGap(562, 562, 562)
+                .addComponent(OKButton, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RUTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(abrir)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VOLVERButton)
-                    .addComponent(OKButton))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VOLVERButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(ABRIRJbutton)
+                            .addComponent(RUTAJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
 
@@ -142,53 +139,68 @@ public class MenuImportar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
-        JFileChooser jfc = new JFileChooser();
-        jfc.setAcceptAllFileFilterUsed(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Workbooks", "xlsx");
-        jfc.addChoosableFileFilter(filter);
-        jfc.showOpenDialog(this);
+    private class Volver implements ActionListener {
 
-        File archivo = jfc.getSelectedFile();
-        if (archivo != null) {
-            RUTA.setText(archivo.getAbsolutePath());
-        }
-    }//GEN-LAST:event_abrirActionPerformed
-
-    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-        ProgramasExcel programasExcel = new ProgramasExcel();
-        if (RUTA.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento", "Error!", JOptionPane.ERROR_MESSAGE);
-        } else {
-            OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
-            boolean mensajeImportar = optimizarCodigo.mensajeImportar(jPanel1, RUTA.getText());
-            if (mensajeImportar){
-            try {
-                programasExcel.Importar(RUTA.getText());
-            } catch (InvalidFormatException ex) {
-                Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
-            menuPrincipalFrame.setVisible(true);
+        @Override
+        public void actionPerformed(ActionEvent e1) {
+            MenuPrincipalFrame obj = new MenuPrincipalFrame();
+            obj.setVisible(true);
             dispose();
-            JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
-            }
-    }//GEN-LAST:event_OKButtonActionPerformed
+        }
+
     }
-    private void VOLVERButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLVERButtonActionPerformed
-        MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
-        menuPrincipalFrame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_VOLVERButtonActionPerformed
+
+    private class Abrir implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e2) {
+            JFileChooser jfc = new JFileChooser();
+            jfc.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Workbooks", "xlsx");
+            jfc.addChoosableFileFilter(filter);
+            jfc.showOpenDialog(jPanel1);
+            File archivo = jfc.getSelectedFile();
+            if (archivo != null) {
+                RUTAJTextField.setText(archivo.getAbsolutePath());
+            }
+        }
+
+    }
+
+    private class Ok implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e3) {
+            ProgramasExcel programasExcel = new ProgramasExcel();
+            if (RUTAJTextField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento", "Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+                boolean mensajeImportar = optimizarCodigo.mensajeImportar(jPanel1, RUTAJTextField.getText());
+                if (mensajeImportar) {
+                    try {
+                        programasExcel.Importar(RUTAJTextField.getText());
+                    } catch (InvalidFormatException ex) {
+                        Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
+                    menuPrincipalFrame.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ABRIRJbutton;
     private javax.swing.JButton OKButton;
-    private javax.swing.JTextField RUTA;
+    private javax.swing.JTextField RUTAJTextField;
     private javax.swing.JButton VOLVERButton;
-    private javax.swing.JButton abrir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

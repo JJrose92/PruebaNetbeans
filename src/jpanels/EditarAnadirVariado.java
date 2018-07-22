@@ -126,7 +126,7 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public class Menu implements ActionListener {
+    private class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -137,7 +137,7 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
 
     }
 
-    public class Volver implements ActionListener {
+    private class Volver implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -153,7 +153,7 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
         }
     }
 
-    public class OK implements ActionListener {
+    private class OK implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {

@@ -21,7 +21,6 @@ public class AnadirPelicula extends javax.swing.JFrame {
      */
     public AnadirPelicula() {
         initComponents();
-
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Cero e3 = new Cero();

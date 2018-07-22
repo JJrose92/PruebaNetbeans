@@ -36,8 +36,6 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             rellenar(pelicula);
             peliculaAntigua = pelicula;
         }
-        
-        
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Ok e3 = new Ok();
@@ -77,7 +75,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         notaJText = new javax.swing.JFormattedTextField();
         AnoJText = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(750, 450));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 450));
@@ -114,8 +112,18 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         jLabel1.setText("Nombre Pelicula: ");
 
         notaJText.setToolTipText("");
+        notaJText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                notaJTextKeyTyped(evt);
+            }
+        });
 
-        AnoJText.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+        AnoJText.setToolTipText("");
+        AnoJText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AnoJTextKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,7 +226,19 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public class Menu implements ActionListener {
+    private void AnoJTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnoJTextKeyTyped
+        if (AnoJText.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_AnoJTextKeyTyped
+
+    private void notaJTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_notaJTextKeyTyped
+        if (notaJText.getText().length() > 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_notaJTextKeyTyped
+
+    private class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -229,7 +249,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
 
     }
 
-    public class Volver implements ActionListener {
+    private class Volver implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -246,7 +266,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         }
     }
 
-    public class Ok implements ActionListener {
+    private class Ok implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
@@ -287,9 +307,9 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                 positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Años Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                if((Integer.parseInt(AnoJText.getText())>1887) && (Integer.parseInt(AnoJText.getText())<=Calendar.getInstance().get(Calendar.YEAR))){
-                arrayList.add(AnoJText.getText());
-                }else{
+                if ((optimizarCodigo.YearValido(AnoJText.getText()))) {
+                    arrayList.add(AnoJText.getText());
+                } else {
                     positivo = false;
                     JOptionPane.showMessageDialog(jPanel1, "Escriba un año correcto\n Ejemplo: 2017", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -298,9 +318,9 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                 positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Nota Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                if ((optimizarCodigo.NotaValida(notaJText.getText()))){
-                arrayList.add(notaJText.getText());
-                }else{
+                if ((optimizarCodigo.NotaValida(notaJText.getText()))) {
+                    arrayList.add(notaJText.getText());
+                } else {
                     positivo = false;
                     JOptionPane.showMessageDialog(jPanel1, "Escriba una nota correcta \n Ejemplo: 8.7", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -308,7 +328,6 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             if (positivo) {
                 ProgramasExcel programasExcel = new ProgramasExcel();
 
-                
                 boolean seguir;
 
                 seguir = optimizarCodigo.mensajeEditarAnadirPelicula(jPanel1, arrayList, datosPelicula);
@@ -365,6 +384,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             }
         }
     }
+    
 
     private void rellenar(String pelicula) {
         try {

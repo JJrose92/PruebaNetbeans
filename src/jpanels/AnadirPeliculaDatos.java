@@ -319,7 +319,7 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
         }
     }
 
-    public class Menu implements ActionListener {
+    private class Menu implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {
@@ -330,7 +330,7 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
 
     }
 
-    public class Volver implements ActionListener {
+    private class Volver implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -341,7 +341,7 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
 
     }
 
-    public class Ok implements ActionListener {
+    private class Ok implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e1) {

@@ -177,13 +177,13 @@ public class OptimizarCodigo {
     }
 
     public boolean NotaValida(String text) {
-                boolean resultado;
+        boolean resultado;
 
         try {
             double doble = Double.parseDouble(text);
-            if (doble>=0 && doble <=10){
-            resultado = true;
-            }else{
+            if (doble >= 0 && doble <= 10) {
+                resultado = true;
+            } else {
                 resultado = false;
             }
         } catch (NumberFormatException excepcion) {
@@ -191,6 +191,24 @@ public class OptimizarCodigo {
         }
 
         return resultado;
-    
+
+    }
+
+    public boolean YearValido(String text) {
+        boolean resultado;
+
+        try {
+            int parseInt = Integer.parseInt(text);           
+            if ((parseInt > 1887) && (parseInt <= Calendar.getInstance().get(Calendar.YEAR))) {
+                resultado = true;
+            } else {
+                resultado = false;
+            }
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+     
     }
 }

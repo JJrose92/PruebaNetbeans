@@ -187,7 +187,7 @@ public class MenuEditarEliminar extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public class MENUButton implements ActionListener {
+    private class MENUButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -197,7 +197,7 @@ public class MenuEditarEliminar extends JFrame {
         }
     }
 
-    public class ListSelectionSub implements ListSelectionListener {
+    private class ListSelectionSub implements ListSelectionListener {
 
         @Override
         public void valueChanged(ListSelectionEvent e7) {
@@ -210,7 +210,7 @@ public class MenuEditarEliminar extends JFrame {
 
     }
 
-    public class OKSub implements ActionListener {
+    private class OKSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e6) {
@@ -292,7 +292,7 @@ public class MenuEditarEliminar extends JFrame {
 
     }
 
-    public class EditarGeneroSub implements ActionListener {
+    private class EditarGeneroSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e2) {
@@ -304,7 +304,7 @@ public class MenuEditarEliminar extends JFrame {
 
     }
 
-    public class EditarDirectorSub implements ActionListener {
+    private class EditarDirectorSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e3) {
@@ -316,7 +316,7 @@ public class MenuEditarEliminar extends JFrame {
 
     }
 
-    public class EditarPaisSub implements ActionListener {
+    private class EditarPaisSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e4) {
@@ -328,7 +328,7 @@ public class MenuEditarEliminar extends JFrame {
 
     }
 
-    public class EditarProductorSub implements ActionListener {
+    private class EditarProductorSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e5) {
@@ -339,7 +339,7 @@ public class MenuEditarEliminar extends JFrame {
         }
     }
 
-    public class EditarPeliculaSub implements ActionListener {
+    private class EditarPeliculaSub implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e9) {

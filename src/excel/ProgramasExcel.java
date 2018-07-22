@@ -59,8 +59,8 @@ public class ProgramasExcel {
             Iterator<Row> iterator = sheet.iterator();
             int numcelda = 0;
             int fila = 0;
-            while(!celda){
-            //while (fila <= sheet.getLastRowNum()) {
+            while (!celda) {
+                //while (fila <= sheet.getLastRowNum()) {
                 Row next = sheet.getRow(fila);
                 if (!celda) {
                     Iterator<Cell> cellIterator = next.cellIterator();
@@ -82,7 +82,7 @@ public class ProgramasExcel {
                     removeRow(sheet, fila);
                 }
                 fila++;
-*/
+                 */
             }
             removeEmptyRows(VAR_PELICULA, decision, numcelda);
             removeEmptyRows(variable, decision, 0);
@@ -90,6 +90,73 @@ public class ProgramasExcel {
         salida = new FileOutputStream(nombreArchivo);
         workbook.write(salida);
         workbook.close();
+    }
+
+    public boolean ArchivoValido(String ruta) throws InvalidFormatException, IOException {
+        FileInputStream fisNew = new FileInputStream(ruta);
+        Workbook workbook2 = WorkbookFactory.create(fisNew);
+        Iterator<Sheet> sheetIterator = workbook2.sheetIterator();
+        boolean correcto = true;
+        int i = 0;
+        Row row;
+        ArrayList nombresHojas = nombresHojas();
+        while (sheetIterator.hasNext() && correcto && i < nombresHojas.size()) {
+            Sheet next = sheetIterator.next();
+            String sheetName = next.getSheetName();
+            correcto = sheetName.equalsIgnoreCase(nombresHojas.get(i).toString());
+            if (!correcto) {
+                if (sheetName.equalsIgnoreCase("Pelicula")) {
+                    row = next.getRow(0);
+                    if (row != null) {
+                        Cell cell1 = row.getCell(0);
+                        Cell cell2 = row.getCell(1);
+                        Cell cell3 = row.getCell(2);
+                        Cell cell4 = row.getCell(3);
+                        Cell cell5 = row.getCell(4);
+                        Cell cell6 = row.getCell(5);
+                        Cell cell7 = row.getCell(6);
+                        if (cell1 != null && cell2 != null && cell3 != null && cell4 != null && cell5 != null && cell6 != null && cell7 != null) {
+                            correcto = cell1.getStringCellValue().equalsIgnoreCase("Nombre Pelicula");
+                            if (correcto) {
+                                correcto = cell2.getStringCellValue().equalsIgnoreCase("Genero");
+                            }
+                            if (correcto) {
+                                correcto = cell3.getStringCellValue().equalsIgnoreCase("Director");
+                            }
+                            if (correcto) {
+                                correcto = cell4.getStringCellValue().equalsIgnoreCase("Pais");
+                            }
+                            if (correcto) {
+                                correcto = cell5.getStringCellValue().equalsIgnoreCase("Productor");
+                            }
+                            if (correcto) {
+                                correcto = cell6.getStringCellValue().equalsIgnoreCase("Año");
+                            }
+                            if (correcto) {
+                                correcto = cell7.getStringCellValue().equalsIgnoreCase("Nota");
+                            }
+                        } else {
+                            if (cell1 == null && cell2 == null && cell3 == null && cell4 == null && cell5 == null && cell6 == null && cell7 == null) {
+                                correcto = true;
+                            } else {
+                                correcto = false;
+                            }
+                        }
+
+                    }
+                } else {
+                    row = next.getRow(0);
+                    if (row != null) {
+                        Cell cell = row.getCell(0);
+                        if (cell != null) {
+                            correcto = cell.getStringCellValue().equalsIgnoreCase(sheetName);
+                        }
+                    }
+                }
+            }
+            i++;
+        }
+        return correcto;
     }
 
     public void Importar(String ruta) throws InvalidFormatException, IOException {
@@ -125,7 +192,6 @@ public class ProgramasExcel {
 
     }
 
-
     public void removeEmptyRows(String Sheet, String variable, int celda) {
         Sheet sheet = workbook.getSheet(Sheet);
         for (int i = 0; i <= sheet.getLastRowNum(); i++) {
@@ -147,7 +213,6 @@ public class ProgramasExcel {
             }
         }
     }
-
 
     public void EditarPelicula(ArrayList lista, String pelicula) throws IOException, InvalidFormatException {
         FileInputStream fisNew = new FileInputStream(nombreArchivo);
@@ -450,12 +515,12 @@ public class ProgramasExcel {
         // La hoja donde pondremos los datos
         try {
             // Creamos el flujo de salida de datos,
-            // apuntando al archivo donde queremos 
+            // apuntando al archivo donde queremos
             // almacenar el libro de Excel
             salida = new FileOutputStream(nombreArchivo);
 
-            // Almacenamos el libro de 
-            // Excel via ese 
+            // Almacenamos el libro de
+            // Excel via ese
             // flujo de datos
             workbook.write(salida);
             workbook.close();

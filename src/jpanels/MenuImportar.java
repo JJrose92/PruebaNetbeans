@@ -78,7 +78,7 @@ public class MenuImportar extends javax.swing.JFrame {
         jLabel1.setText("RUTA: ");
 
         ABRIRJbutton.setBackground(new java.awt.Color(51, 255, 255));
-        ABRIRJbutton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ABRIRJbutton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         ABRIRJbutton.setText("ABRIR");
 
         VOLVERButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -119,9 +119,9 @@ public class MenuImportar extends javax.swing.JFrame {
                         .addGap(186, 186, 186)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(ABRIRJbutton)
+                            .addComponent(ABRIRJbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RUTAJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
 
@@ -172,6 +172,7 @@ public class MenuImportar extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e3) {
             ProgramasExcel programasExcel = new ProgramasExcel();
+            boolean ArchivoValido = false;
             if (RUTAJTextField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
@@ -179,16 +180,28 @@ public class MenuImportar extends javax.swing.JFrame {
                 boolean mensajeImportar = optimizarCodigo.mensajeImportar(jPanel1, RUTAJTextField.getText());
                 if (mensajeImportar) {
                     try {
-                        programasExcel.Importar(RUTAJTextField.getText());
+                        ArchivoValido = programasExcel.ArchivoValido(RUTAJTextField.getText());
                     } catch (InvalidFormatException ex) {
                         Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
                         Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
-                    menuPrincipalFrame.setVisible(true);
-                    dispose();
-                    JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                    if (ArchivoValido) {
+
+                        try {
+                            programasExcel.Importar(RUTAJTextField.getText());
+                        } catch (InvalidFormatException ex) {
+                            Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MenuImportar.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        MenuPrincipalFrame menuPrincipalFrame = new MenuPrincipalFrame();
+                        menuPrincipalFrame.setVisible(true);
+                        dispose();
+                        JOptionPane.showMessageDialog(jPanel1, "Excel importado correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(jPanel1, "Por favor seleccione un documento que tenga el mismo formato", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }

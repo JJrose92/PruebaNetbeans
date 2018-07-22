@@ -33,6 +33,7 @@ public class MenuAnadirFrame extends javax.swing.JFrame {
         ANADIRPais.addActionListener(e5);
         ANADIRNombrePelicula.addActionListener(e6);
         ANADIRGenero.addActionListener(e7);
+        this.setLocationRelativeTo(null);
     }
 
     /**

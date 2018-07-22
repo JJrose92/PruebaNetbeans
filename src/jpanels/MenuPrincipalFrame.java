@@ -39,6 +39,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         EDITARButton.addActionListener(e2);
         ELIMINARButton.addActionListener(e3);
         IMPORTARButton.addActionListener(e4);
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -30,7 +30,7 @@ public class AnadirPelicula extends javax.swing.JFrame {
         VOLVERButton.addActionListener(e2);
         ANADIRCero.addActionListener(e3);
         ANADIRExistente.addActionListener(e4);
-
+        this.setLocationRelativeTo(null);
     }
 
     /**

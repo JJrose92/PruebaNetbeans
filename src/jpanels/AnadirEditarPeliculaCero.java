@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -35,7 +36,8 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             rellenar(pelicula);
             peliculaAntigua = pelicula;
         }
-
+        
+        
         Menu e1 = new Menu();
         Volver e2 = new Volver();
         Ok e3 = new Ok();
@@ -44,7 +46,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         MENUButton.addActionListener(e1);
         VOLVERButton.addActionListener(e2);
         OKButton.addActionListener(e3);
-
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -64,16 +66,16 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ProductorjTextField = new javax.swing.JTextField();
-        AnojTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         DirectorjTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        notaJText = new javax.swing.JTextField();
         notajLabel = new javax.swing.JLabel();
         VOLVERButton = new javax.swing.JButton();
         MENUButton = new javax.swing.JButton();
         NombrePelijTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        notaJText = new javax.swing.JFormattedTextField();
+        AnoJText = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(750, 450));
@@ -111,41 +113,14 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Nombre Pelicula: ");
 
+        notaJText.setToolTipText("");
+
+        AnoJText.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(notajLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DirectorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel5))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AnojTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                    .addComponent(GenerojTextField)
-                    .addComponent(PaisjTextField))
-                .addGap(65, 65, 65))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(MENUButton)
@@ -154,6 +129,35 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(OKButton)
                 .addGap(29, 29, 29))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(notajLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ProductorjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                    .addComponent(DirectorjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                    .addComponent(notaJText))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(NombrePelijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addComponent(jLabel4)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(GenerojTextField)
+                    .addComponent(PaisjTextField)
+                    .addComponent(AnoJText, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,28 +181,27 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GenerojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AnojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ProductorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81)
+                        .addGap(80, 80, 80)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(notajLabel)
-                            .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                            .addComponent(notaJText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VOLVERButton)
-                            .addComponent(MENUButton)
-                            .addComponent(OKButton))
-                        .addGap(47, 47, 47))))
+                            .addComponent(jLabel5)
+                            .addComponent(AnoJText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VOLVERButton)
+                    .addComponent(MENUButton)
+                    .addComponent(OKButton))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,7 +212,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -249,6 +252,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e3) {
             ArrayList arrayList = new ArrayList();
             boolean positivo = true;
+            OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
             if (NombrePelijTextField.getText().isEmpty()) {
                 positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Nombre Pelicula Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -279,22 +283,32 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             } else {
                 arrayList.add(ProductorjTextField.getText());
             }
-            if (AnojTextField.getText().isEmpty()) {
+            if (AnoJText.getText().isEmpty()) {
                 positivo = false;
-                JOptionPane.showMessageDialog(jPanel1, "Campo Año Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(jPanel1, "Campo Años Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                arrayList.add(AnojTextField.getText());
+                if((Integer.parseInt(AnoJText.getText())>1887) && (Integer.parseInt(AnoJText.getText())<=Calendar.getInstance().get(Calendar.YEAR))){
+                arrayList.add(AnoJText.getText());
+                }else{
+                    positivo = false;
+                    JOptionPane.showMessageDialog(jPanel1, "Escriba un año correcto\n Ejemplo: 2017", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
             if (notaJText.getText().isEmpty()) {
                 positivo = false;
                 JOptionPane.showMessageDialog(jPanel1, "Campo Nota Vacío", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
+                if ((optimizarCodigo.NotaValida(notaJText.getText()))){
                 arrayList.add(notaJText.getText());
+                }else{
+                    positivo = false;
+                    JOptionPane.showMessageDialog(jPanel1, "Escriba una nota correcta \n Ejemplo: 8.7", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
             if (positivo) {
                 ProgramasExcel programasExcel = new ProgramasExcel();
 
-                OptimizarCodigo optimizarCodigo = new OptimizarCodigo();
+                
                 boolean seguir;
 
                 seguir = optimizarCodigo.mensajeEditarAnadirPelicula(jPanel1, arrayList, datosPelicula);
@@ -362,7 +376,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
             DirectorjTextField.setText(datosPelicula.get(2).toString());
             PaisjTextField.setText(datosPelicula.get(3).toString());
             ProductorjTextField.setText(datosPelicula.get(4).toString());
-            AnojTextField.setText(datosPelicula.get(5).toString());
+            AnoJText.setText(datosPelicula.get(5).toString());
             notaJText.setText(datosPelicula.get(6).toString());
         } catch (IOException ex) {
             Logger.getLogger(AnadirEditarPeliculaCero.class.getName()).log(Level.SEVERE, null, ex);
@@ -375,7 +389,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
     private String peliculaAntigua;
     private boolean opc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AnojTextField;
+    private javax.swing.JFormattedTextField AnoJText;
     private javax.swing.JTextField DirectorjTextField;
     private javax.swing.JTextField GenerojTextField;
     private javax.swing.JButton MENUButton;
@@ -391,7 +405,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField notaJText;
+    private javax.swing.JFormattedTextField notaJText;
     private javax.swing.JLabel notajLabel;
     // End of variables declaration//GEN-END:variables
 }

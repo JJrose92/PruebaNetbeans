@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -73,22 +74,22 @@ public class OptimizarCodigo {
     public boolean mensajeEditarAnadirPelicula(JPanel jPanel1, ArrayList arrayList, ArrayList datosPelicula) {
         Object[] opciones = {"Aceptar", "Cancelar"};
         if (datosPelicula == null) {
-        int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea añadir la pelicula con estos datos:"
-                + "\nNombre Pelicula: " + arrayList.get(0).toString()
-                + "\nGenero: " + arrayList.get(1).toString()
-                + "\nDirector: " + arrayList.get(2).toString()
-                + "\nPaís: " + arrayList.get(3).toString()
-                + "\nProductor: " + arrayList.get(4).toString()
-                + "\nAño: " + arrayList.get(5).toString()
-                + "\nNota: " + arrayList.get(6).toString(),
-                "Mensaje de Confirmacion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
-        if (eleccion == JOptionPane.YES_OPTION) {
-            return true;
-        } else {
-            return false;
-        }
+            int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea añadir la pelicula con estos datos:"
+                    + "\nNombre Pelicula: " + arrayList.get(0).toString()
+                    + "\nGenero: " + arrayList.get(1).toString()
+                    + "\nDirector: " + arrayList.get(2).toString()
+                    + "\nPaís: " + arrayList.get(3).toString()
+                    + "\nProductor: " + arrayList.get(4).toString()
+                    + "\nAño: " + arrayList.get(5).toString()
+                    + "\nNota: " + arrayList.get(6).toString(),
+                    "Mensaje de Confirmacion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea añadir la pelicula con estos datos:"
                     + "\nNombre Pelicula: " + datosPelicula.get(0).toString() + " por " + arrayList.get(0).toString()
@@ -148,8 +149,8 @@ public class OptimizarCodigo {
             return false;
         }
     }
-    
-        public boolean mensajeImportar(JPanel jPanel1, String ruta) {
+
+    public boolean mensajeImportar(JPanel jPanel1, String ruta) {
         Object[] opciones = {"Aceptar", "Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(jPanel1, "En realidad desea importar el archivo que esta en la siguiente ruta:"
                 + "\nRuta: " + ruta, "Mensaje de Confirmacion",
@@ -160,5 +161,36 @@ public class OptimizarCodigo {
         } else {
             return false;
         }
+    }
+
+    public String[] devolver() {
+        int i = 1888;
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int resta = year - i;
+        String[] years = new String[resta + 1];
+        int k = 0;
+        for (int a = 1888; a <= year; a++) {
+            years[k] = Integer.toString(a);
+            k++;
+        }
+        return years;
+    }
+
+    public boolean NotaValida(String text) {
+                boolean resultado;
+
+        try {
+            double doble = Double.parseDouble(text);
+            if (doble>=0 && doble <=10){
+            resultado = true;
+            }else{
+                resultado = false;
+            }
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    
     }
 }

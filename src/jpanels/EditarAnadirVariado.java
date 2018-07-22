@@ -39,6 +39,7 @@ public class EditarAnadirVariado extends javax.swing.JFrame {
         jButtonMenu.addActionListener(e1);
         jButtonVolver.addActionListener(e2);
         jButtonOK.addActionListener(e3);
+        this.setLocationRelativeTo(null);
     }
 
     /**

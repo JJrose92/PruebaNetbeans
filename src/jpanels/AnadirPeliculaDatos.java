@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,23 +38,14 @@ public class AnadirPeliculaDatos extends javax.swing.JFrame {
         Volver e2 = new Volver();
 
         Ok e3 = new Ok();
-        int i = 1888;
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        int resta = year - i;
-        String[] years = new String[resta + 1];
-        int k = 0;
-        for (int a = 1888; a <= year; a++) {
-            years[k] = Integer.toString(a);
-            k++;
-        }
-        jListYears.setListData(years);
+        jListYears.setListData(optimizarCodigo.devolver());
         String[] notas = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         jListNotas.setListData(notas);
         iniciarJList();
         MENUButton.addActionListener(e1);
         VOLVERButton.addActionListener(e2);
         OKButton.addActionListener(e3);
-
+        this.setLocationRelativeTo(null);
     }
 
     /**

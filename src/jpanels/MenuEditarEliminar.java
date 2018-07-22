@@ -55,7 +55,7 @@ public class MenuEditarEliminar extends JFrame {
         okButton.addActionListener(e6);
         menuButton.addActionListener(e8);
         EditarPelicula.addActionListener(e9);
-
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -201,7 +201,11 @@ public class MenuEditarEliminar extends JFrame {
 
         @Override
         public void valueChanged(ListSelectionEvent e7) {
-            decision = Lista.getSelectedValue().toString();
+            final Object selectedValue = Lista.getSelectedValue();
+            if (selectedValue != null) {
+                decision = selectedValue.toString();
+            }
+
         }
 
     }
@@ -261,6 +265,8 @@ public class MenuEditarEliminar extends JFrame {
 
     private void rellenar() {
         ProgramasExcel pex = new ProgramasExcel();
+        Lista.clearSelection();
+        decision ="";
         Lista.removeAll();
         try {
             String[] devolverNombres = pex.devolverNombres(variable);
@@ -279,7 +285,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e1) {
             borrarnombre = false;
-            decision ="";
             variable = VAR_NOMBRE_PELICULA;
             rellenar();
 
@@ -292,7 +297,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e2) {
             borrarnombre = false;
-            decision ="";
             variable = VAR_GENERO;
             rellenar();
 
@@ -305,7 +309,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e3) {
             borrarnombre = false;
-            decision ="";
             variable = VAR_DIRECTOR;
             rellenar();
 
@@ -318,7 +321,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e4) {
             borrarnombre = false;
-            decision ="";
             variable = VAR_PAIS;
             rellenar();
 
@@ -331,7 +333,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e5) {
             borrarnombre = false;
-            decision ="";
             variable = VAR_PRODUCTOR;
             rellenar();
 
@@ -343,7 +344,6 @@ public class MenuEditarEliminar extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e9) {
             borrarnombre = true;
-            decision ="";
             variable = VAR_PELICULA;
             rellenar();
 
@@ -357,7 +357,7 @@ public class MenuEditarEliminar extends JFrame {
     private static final String VAR_DIRECTOR = "Director";
     private static final String VAR_PAIS = "Pais";
     private static final String VAR_PRODUCTOR = "Productor";
-    private String decision ="";
+    private String decision;
     private String variable;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarDirector;

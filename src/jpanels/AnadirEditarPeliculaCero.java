@@ -311,7 +311,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                     arrayList.add(AnoJText.getText());
                 } else {
                     positivo = false;
-                    JOptionPane.showMessageDialog(jPanel1, "Escriba un año correcto\n Ejemplo: 2017", "Error!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(jPanel1, "Escriba un año correcto" + " (1888-"+Calendar.getInstance().get(Calendar.YEAR)+")\n Ejemplo: 2017", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
             if (notaJText.getText().isEmpty()) {
@@ -322,7 +322,7 @@ public class AnadirEditarPeliculaCero extends javax.swing.JFrame {
                     arrayList.add(notaJText.getText());
                 } else {
                     positivo = false;
-                    JOptionPane.showMessageDialog(jPanel1, "Escriba una nota correcta \n Ejemplo: 8.7", "Error!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(jPanel1, "Escriba una nota correcta (0-10) \n Ejemplo: 8.7", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
             if (positivo) {
